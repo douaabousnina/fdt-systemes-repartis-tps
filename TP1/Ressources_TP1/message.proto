@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package rt4.example;
+
+option java_package = "rt4.example";
+option java_outer_classname = "MessageCalculatorProto";
+
+// Service definition
+service MessageCalculator {
+  rpc ProcessMessage (MessageRequest) returns (MessageResponse);
+}
+
+// Message request containing the text
+message MessageRequest {
+  string text = 1;
+}
+
+// Response with the processed text
+message MessageResponse {
+  string processed_text = 1;
+}
