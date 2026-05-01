@@ -1,0 +1,65 @@
+networks:
+  dist-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16
+
+services:
+  node1:
+    image: eclipse-temurin:17-jdk
+    container_name: dist-node1
+    working_dir: /app
+    volumes:
+      - ./target:/app
+    command: ["java", "-Djava.net.preferIPv4Stack=true", "-cp", "distributed-system-1.0-SNAPSHOT.jar", "rt4.distributed.NodeServer", "node1", "50051"]
+    ports:
+      - "50051:50051"
+    networks:
+      dist-network:
+        ipv4_address: 172.30.0.2
+
+  node2:
+    image: eclipse-temurin:17-jdk
+    container_name: dist-node2
+    working_dir: /app
+    volumes:
+      - ./target:/app
+    command: ["java", "-Djava.net.preferIPv4Stack=true", "-cp", "distributed-system-1.0-SNAPSHOT.jar", "rt4.distributed.NodeServer", "node2", "50052"]
+    ports:
+      - "50052:50052"
+    networks:
+      dist-network:
+        ipv4_address: 172.30.0.3
+    depends_on:
+      - node1
+
+  node3:
+    image: eclipse-temurin:17-jdk
+    container_name: dist-node3
+    working_dir: /app
+    volumes:
+      - ./target:/app
+    command: ["java", "-Djava.net.preferIPv4Stack=true", "-cp", "distributed-system-1.0-SNAPSHOT.jar", "rt4.distributed.NodeServer", "node3", "50053"]
+    ports:
+      - "50053:50053"
+    networks:
+      dist-network:
+        ipv4_address: 172.30.0.4
+    depends_on:
+      - node2
+
+  client:
+    image: eclipse-temurin:17-jdk
+    container_name: dist-client
+    working_dir: /app
+    volumes:
+      - ./target:/app
+    command: ["java", "-Djava.net.preferIPv4Stack=true", "-cp", "distributed-system-1.0-SNAPSHOT.jar", "rt4.distributed.TaskClient"]
+    networks:
+      dist-network:
+        ipv4_address: 172.30.0.5
+    depends_on:
+      - node1
+      - node2
+      - node3

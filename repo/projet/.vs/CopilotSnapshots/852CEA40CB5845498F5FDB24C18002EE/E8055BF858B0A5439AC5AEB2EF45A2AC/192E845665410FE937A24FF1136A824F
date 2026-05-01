@@ -1,0 +1,142 @@
+﻿package rt4.distributed;
+
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+import java.util.Set;
+
+/**
+ * Serveur pour un nœud distributé
+ */
+public class DistributedNode {
+    private static final Logger logger = LoggerFactory.getLogger(DistributedNode.class);
+    
+    private final String nodeId;
+    private final int port;
+    private final String host;
+    private final Server server;
+    
+    final PaxosConsensus consensus;
+    final DistributedMutex mutex;
+    private final TaskQueue taskQueue;
+    private final NodeRegistry registry;
+    
+    private volatile boolean running;
+    
+    public DistributedNode(String nodeId, int port, int totalNodes) throws IOException {
+        this.nodeId = nodeId;
+        this.port = port;
+        this.host = "localhost";
+        this.running = true;
+        
+        // Initialiser les composants
+        this.consensus = new PaxosConsensus(nodeId, totalNodes);
+        this.mutex = new DistributedMutex("resource_1");
+        this.taskQueue = new TaskQueue(100); // Max 100 tâches en attente
+        this.registry = new NodeRegistry(nodeId);
+        
+        // Construire le serveur gRPC
+        this.server = ServerBuilder.forPort(port)
+                .addService(new TaskServiceImpl(nodeId, taskQueue, consensus, mutex, totalNodes))
+                .addService(new ConsensusServiceImpl(nodeId, consensus))
+                .addService(new MutexServiceImpl(nodeId, mutex))
+                .build();
+        
+        logger.info("DistributedNode {} initialized on {}:{}", nodeId, host, port);
+    }
+    
+    /**
+     * Démarrer le serveur
+     */
+    public void start() throws IOException {
+        server.start();
+        logger.info("Server started for node {} on port {}", nodeId, port);
+        
+        // Afficher les informations du serveur
+        System.out.println("=====================================================");
+        System.out.println("Distributed Node Started");
+        System.out.println("Node ID: " + nodeId);
+        System.out.println("Address: " + host + ":" + port);
+        System.out.println("=====================================================");
+    }
+    
+    /**
+     * Attendre l'arrêt du serveur
+     */
+    public void waitForTermination() throws InterruptedException {
+        server.awaitTermination();
+    }
+    
+    /**
+     * Arrêter le serveur
+     */
+    public void stop() {
+        logger.info("Stopping server for node {}", nodeId);
+        try {
+            server.shutdown().awaitTermination(5, TimeUnit.SECONDS);
+            running = false;
+            logger.info("Server stopped for node {}", nodeId);
+        } catch (InterruptedException e) {
+            logger.error("Error stopping server: {}", e.getMessage());
+            server.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+    }
+    
+    /**
+     * Afficher les statistiques du nœud
+     */
+    public void printStats() {
+        System.out.println("\n=== Node Statistics for " + nodeId + " ===");
+        System.out.println("Consensus - Leader: " + consensus.getLeaderId() + ", Term: " + consensus.getCurrentTerm());
+        System.out.println("Mutex - " + mutex.getStatus());
+        System.out.println("Task Queue - " + taskQueue.getQueueStats());
+        System.out.println("====================================\n");
+    }
+    
+
+    private static String getEnv(String key, String defaultValue) {
+    String value = System.getenv(key);
+    return value != null ? value : defaultValue;
+}
+    /**
+     * Main - Démarrer un nœud
+     */
+    public static void main(String[] args) throws IOException, InterruptedException {
+        String nodeId = getEnv("NODE_ID", "node_1");
+        int port = Integer.parseInt(getEnv("PORT", "50051"));
+        int totalNodes = Integer.parseInt(getEnv("TOTAL_NODES", "3"));
+
+        DistributedNode node = new DistributedNode(nodeId, port, totalNodes);
+        node.start();
+
+        // Bootstrap : enregistrer les pairs connus
+        node.registry.registerNode("node_1", "172.29.0.2", 50051);
+        node.registry.registerNode("node_2", "172.29.0.3", 50052);
+        node.registry.registerNode("node_3", "172.29.0.4", 50053);
+
+        // Attendre que tous les nœuds soient up
+        Thread.sleep(2000);
+
+        // Lancer l'élection initiale
+        Set<String> available = Set.of("node_1", "node_2", "node_3");
+        String leader = node.consensus.electLeader(available);
+        logger.info("Initial election done. Leader: {}", leader);
+
+        // Boucle de maintenance
+        while (node.running) {
+            try {
+                Thread.sleep(30000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
+
+        node.waitForTermination();
+    }
+}

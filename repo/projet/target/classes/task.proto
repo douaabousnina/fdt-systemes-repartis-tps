@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_package = "rt4.distributed";
+option java_outer_classname = "TaskProto";
+
+service NodeService {
+  // Client sends a task to any node
+  rpc SubmitTask (TaskRequest) returns (TaskResponse);
+
+  // Nodes use this to forward tasks to the leader
+  rpc ForwardTask (TaskRequest) returns (TaskResponse);
+
+  // Leader uses this to acquire the distributed mutex on all nodes
+  rpc AcquireLock (LockRequest) returns (LockResponse);
+
+  // Leader releases the lock after execution
+  rpc ReleaseLock (LockRequest) returns (LockResponse);
+}
+
+message TaskRequest {
+  string task_id = 1;
+  string task_type = 2;  // "compute", "message", etc.
+  string payload = 3;
+}
+
+message TaskResponse {
+  bool success = 1;
+  string result = 2;
+  string executed_by = 3;
+}
+
+message LockRequest {
+  string task_id = 1;
+  string requester_node = 2;
+}
+
+message LockResponse {
+  bool granted = 1;
+  string message = 2;
+}
