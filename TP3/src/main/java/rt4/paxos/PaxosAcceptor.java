@@ -45,7 +45,7 @@ public class PaxosAcceptor {
             ManagedChannel channel = ManagedChannelBuilder
                     .forAddress(servers.get(i), ports.get(i))
                     .usePlaintext()
-                    .nameResolverFactory(new DnsNameResolverProvider()) // <-- was missing here
+                    .nameResolverFactory(new DnsNameResolverProvider())
                     .build();
 
             PaxosServiceGrpc.PaxosServiceBlockingStub stub = PaxosServiceGrpc.newBlockingStub(channel);
