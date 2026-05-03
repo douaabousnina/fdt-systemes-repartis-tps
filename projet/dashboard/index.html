@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Distributed System — Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;700;800&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #0a0c10;
+    --surface: #111318;
+    --border:  #1e2230;
+    --text:    #c8cdd8;
+    --muted:   #4a5068;
+    --accent:  #4f8ef7;
+    --green:   #3ecf8e;
+    --amber:   #f5a623;
+    --red:     #e05c5c;
+    --purple:  #9b7ff4;
+    --mono:    'JetBrains Mono', monospace;
+    --display: 'Syne', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 32px 24px;
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }
+  header .sub { color: var(--muted); font-size: 11px; }
+  #clock { margin-left: auto; color: var(--muted); font-size: 11px; }
+
+  /* ── SSE status pill ───────────────────────────────────────────────── */
+  #sse-status {
+    font-size: 10px;
+    padding: 2px 10px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: all 0.3s;
+  }
+  #sse-status.connected   { border-color: rgba(62,207,142,0.4); color: var(--green); }
+  #sse-status.connecting  { border-color: rgba(245,166,35,0.4); color: var(--amber); }
+  #sse-status.error       { border-color: rgba(224,92,92,0.4);  color: var(--red);   }
+
+  /* ── Node grid ─────────────────────────────────────────────────── */
+  #nodes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .node-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    transition: border-color 0.3s;
+  }
+  .node-card.leader { border-color: var(--accent); }
+  .node-card.dead   { border-color: var(--red); opacity: 0.55; }
+
+  .node-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+  .dot.alive { background: var(--green); box-shadow: 0 0 6px var(--green); }
+  .dot.dead  { background: var(--red); }
+
+  .node-name { font-family: var(--display); font-weight: 700; font-size: 15px; color: #fff; }
+
+  .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .badge {
+    font-size: 10px; padding: 2px 8px; border-radius: 4px;
+    font-weight: 600; letter-spacing: 0.5px;
+  }
+  .badge.leader { background: rgba(79,142,247,0.15); color: var(--accent); border: 1px solid rgba(79,142,247,0.3); }
+  .badge.dead   { background: rgba(224,92,92,0.15);  color: var(--red);    border: 1px solid rgba(224,92,92,0.3); }
+
+  .node-row {
+    display: flex; justify-content: space-between;
+    padding: 5px 0; border-bottom: 1px solid var(--border); font-size: 11px;
+  }
+  .node-row:last-child { border-bottom: none; }
+  .node-row .key { color: var(--muted); }
+  .node-row .val { color: var(--text); font-weight: 600; }
+  .val.yes { color: var(--green); }
+  .val.no  { color: var(--muted); }
+
+  /* ── Cluster topology SVG ──────────────────────────────────────── */
+  #topo-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  #topo-section h2 {
+    font-family: var(--display); font-size: 13px; font-weight: 700;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
+  }
+  #topo-svg { width: 100%; max-width: 520px; display: block; margin: 0 auto; }
+
+  /* ── Activity feed ─────────────────────────────────────────────── */
+  #feed-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  #feed-section h2 {
+    font-family: var(--display); font-size: 13px; font-weight: 700;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  #feed-section h2 .live-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green); box-shadow: 0 0 6px var(--green);
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  #feed-entries {
+    max-height: 320px; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+
+  .feed-entry {
+    display: grid;
+    grid-template-columns: 65px 60px 80px 1fr;
+    gap: 8px;
+    font-size: 11px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    background: transparent;
+    transition: background 0.2s;
+    animation: slideIn 0.25s ease;
+    align-items: center;
+  }
+  .feed-entry:hover { background: rgba(255,255,255,0.03); }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; } }
+
+  .feed-time  { color: var(--muted); font-size: 10px; }
+  .feed-actor { font-weight: 600; }
+  .feed-actor.client { color: var(--amber); }
+  .feed-actor.node1  { color: var(--accent); }
+  .feed-actor.node2  { color: var(--green); }
+  .feed-actor.node3  { color: var(--purple); }
+  .feed-actor.system { color: var(--muted); }
+
+  .feed-type {
+    font-size: 10px; padding: 1px 6px; border-radius: 3px; font-weight: 600;
+    text-align: center; letter-spacing: 0.3px;
+  }
+  .feed-type.task-submit { background: rgba(245,166,35,0.15);  color: var(--amber); }
+  .feed-type.forward     { background: rgba(79,142,247,0.15);  color: var(--accent); }
+  .feed-type.paxos       { background: rgba(155,127,244,0.15); color: var(--purple); }
+  .feed-type.execute     { background: rgba(62,207,142,0.15);  color: var(--green); }
+  .feed-type.heartbeat   { background: rgba(74,80,104,0.12);   color: var(--muted); }
+  .feed-type.fault       { background: rgba(224,92,92,0.15);   color: var(--red); }
+  .feed-type.result      { background: rgba(62,207,142,0.12);  color: var(--green); }
+
+  .feed-msg { color: var(--text); }
+
+  @media (max-width: 700px) {
+    #nodes { grid-template-columns: 1fr; }
+    .feed-entry { grid-template-columns: 55px 50px 1fr; }
+    .feed-type { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Distributed System</h1>
+  <span class="sub">gRPC · Paxos · Mutex</span>
+  <span id="sse-status" class="connecting">SSE connecting…</span>
+  <span id="clock">--:--:--</span>
+</header>
+
+<section id="nodes">
+  <div class="node-card" id="card-node1"><p class="node-name">Loading…</p></div>
+  <div class="node-card" id="card-node2"><p class="node-name">Loading…</p></div>
+  <div class="node-card" id="card-node3"><p class="node-name">Loading…</p></div>
+</section>
+
+<!-- Cluster topology -->
+<section id="topo-section">
+  <h2>Cluster Topology</h2>
+  <svg id="topo-svg" viewBox="0 0 480 190" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M2 2L8 5L2 8" fill="none" stroke="#4a5068" stroke-width="1.5" stroke-linecap="round"/>
+      </marker>
+      <marker id="arr-fwd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M2 2L8 5L2 8" fill="none" stroke="#4f8ef7" stroke-width="1.5" stroke-linecap="round"/>
+      </marker>
+      <marker id="arr-client" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M2 2L8 5L2 8" fill="none" stroke="#f5a623" stroke-width="1.5" stroke-linecap="round"/>
+      </marker>
+    </defs>
+
+    <!-- Client box -->
+    <rect x="190" y="140" width="100" height="36" rx="7" fill="#111318" stroke="#2a2e40" stroke-width="1.5"/>
+    <text x="240" y="162" text-anchor="middle" fill="#f5a623" font-family="'Syne',sans-serif" font-size="12" font-weight="700">CLIENT</text>
+
+    <!-- Nodes -->
+    <circle id="tc-node1" cx="80"  cy="80" r="38" fill="#111318" stroke="#1e2230" stroke-width="1.5"/>
+    <circle id="tc-node2" cx="240" cy="30" r="38" fill="#111318" stroke="#1e2230" stroke-width="1.5"/>
+    <circle id="tc-node3" cx="400" cy="80" r="38" fill="#111318" stroke="#1e2230" stroke-width="1.5"/>
+
+    <text x="80"  y="76"  text-anchor="middle" fill="#c8cdd8" font-family="'Syne',sans-serif" font-size="12" font-weight="700">node1</text>
+    <text x="240" y="26"  text-anchor="middle" fill="#c8cdd8" font-family="'Syne',sans-serif" font-size="12" font-weight="700">node2</text>
+    <text x="400" y="76"  text-anchor="middle" fill="#c8cdd8" font-family="'Syne',sans-serif" font-size="12" font-weight="700">node3</text>
+
+    <!-- Port labels -->
+    <text id="tl-node1" x="80"  y="93"  text-anchor="middle" fill="#4a5068" font-family="'JetBrains Mono',monospace" font-size="9">:50051</text>
+    <text id="tl-node2" x="240" y="43"  text-anchor="middle" fill="#4a5068" font-family="'JetBrains Mono',monospace" font-size="9">:50052</text>
+    <text id="tl-node3" x="400" y="93"  text-anchor="middle" fill="#4a5068" font-family="'JetBrains Mono',monospace" font-size="9">:50053</text>
+
+    <!-- gRPC inter-node lines (full mesh) -->
+    <line id="topo-12" x1="118" y1="68"  x2="202" y2="42"  stroke="#1e2230" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line id="topo-23" x1="278" y1="42"  x2="362" y2="68"  stroke="#1e2230" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <line id="topo-13" x1="118" y1="80"  x2="362" y2="80"  stroke="#1e2230" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+    <!-- Client → nodes arrow -->
+    <line id="client-arrow" x1="240" y1="140" x2="240" y2="68" stroke="#f5a623" stroke-width="1.5"
+          stroke-dasharray="5 3" marker-end="url(#arr-client)" opacity="0"/>
+
+    <!-- Forward arrow between nodes -->
+    <line id="forward-arrow"
+      x1="80" y1="80" x2="240" y2="30"
+      stroke="#4f8ef7" stroke-width="1.5"
+      stroke-dasharray="5 3"
+      marker-end="url(#arr-fwd)"
+      opacity="0"/>
+
+    <!-- LEADER crown indicator -->
+    <text id="leader-crown" x="80" y="62" text-anchor="middle" font-size="14" opacity="0">👑</text>
+  </svg>
+</section>
+
+<!-- Activity feed -->
+<section id="feed-section">
+  <h2><span class="live-dot"></span>Activity Feed</h2>
+  <div id="feed-entries"></div>
+</section>
+
+<script>
+const NODES = [
+  { id: 'node1', httpPort: 43051 },
+  { id: 'node2', httpPort: 43052 },
+  { id: 'node3', httpPort: 43053 },
+];
+
+const NODE_POS = {
+  node1: { cx: 80,  cy: 80 },
+  node2: { cx: 240, cy: 30 },
+  node3: { cx: 400, cy: 80 },
+};
+
+let prevState = {};
+let feedLines = [];
+
+// ── Helpers ─────────────────────────────────────────────────────────────────
+function ts(epochMs) {
+  const d = epochMs ? new Date(epochMs) : new Date();
+  return d.toLocaleTimeString('fr-FR', { hour12: false });
+}
+
+function addFeed(actor, actorClass, type, typeClass, msg) {
+  feedLines.unshift({ time: ts(), actor, actorClass, type, typeClass, msg });
+  if (feedLines.length > 200) feedLines.pop();
+  renderFeed();
+}
+
+function renderFeed() {
+  const el = document.getElementById('feed-entries');
+  el.innerHTML = feedLines.map(l =>
+    `<div class="feed-entry">
+      <span class="feed-time">${l.time}</span>
+      <span class="feed-actor ${l.actorClass}">${l.actor}</span>
+      <span class="feed-type ${l.typeClass}">${l.type}</span>
+      <span class="feed-msg">${l.msg}</span>
+    </div>`
+  ).join('');
+}
+
+// ── Map SSE event type → feed display class ──────────────────────────────────
+const TYPE_CLASS = {
+  'task-submit': 'task-submit',
+  'forward':     'forward',
+  'paxos':       'paxos',
+  'execute':     'execute',
+  'result':      'result',
+  'heartbeat':   'heartbeat',
+  'fault':       'fault',
+};
+
+// ── SSE connection ───────────────────────────────────────────────────────────
+// We try each node in order until one accepts. If the connection drops we
+// rotate to the next node and reconnect after a short delay.
+
+// let sseNodeIndex  = 0;  // which node we're currently connected to
+// let sseSource     = null;
+let sseRetryTimer = null;
+
+function sseUrl(nodeIdx) {
+  return `http://localhost:${NODES[nodeIdx].httpPort}/events`;
+}
+
+function setSseStatus(text, cls) {
+  const el = document.getElementById('sse-status');
+  el.textContent = text;
+  el.className = cls;
+}
+
+function connectSSE() {
+  NODES.forEach(({ id, httpPort }) => {
+    const connect = () => {
+      const es = new EventSource(`http://localhost:${httpPort}/events`);
+
+      es.onopen = () => setSseStatus('SSE ● all nodes', 'connected');
+
+      es.onmessage = (evt) => {
+        if (!evt.data?.trim()) return;
+        try {
+          const { type, actor, msg } = JSON.parse(evt.data);
+          const typeClass = TYPE_CLASS[type] || 'heartbeat';
+          if (type === 'task-submit') animateClientArrow(actor);
+          else if (type === 'forward') {
+            const m = msg.match(/leader\s+(node\d)/);
+            if (m) animateForwardArrow(actor, m[1]);
+          }
+          addFeed(actor, actor, type, typeClass, msg);
+        } catch (e) {}
+      };
+
+      es.onerror = () => {
+        es.close();
+        // reconnect this specific node after 3s
+        setTimeout(connect, 3000);
+      };
+    };
+    connect();
+  });
+}
+
+// ── Node cards ───────────────────────────────────────────────────────────────
+function renderCard(nodeId, data, isAlive) {
+  const card = document.getElementById('card-' + nodeId);
+  card.className = 'node-card' + (!isAlive ? ' dead' : data?.isLeader ? ' leader' : '');
+
+  const badges = [];
+  if (!isAlive)       badges.push('<span class="badge dead">DOWN</span>');
+  if (data?.isLeader) badges.push('<span class="badge leader">LEADER</span>');
+
+  const alive = data?.aliveNodes || [];
+
+  card.innerHTML = `
+    <div class="node-header">
+      <div class="dot ${isAlive ? 'alive' : 'dead'}"></div>
+      <span class="node-name">${nodeId}</span>
+    </div>
+    <div class="badges">${badges.join('') || ''}</div>
+    <div class="node-row"><span class="key">status</span><span class="val ${isAlive ? 'yes' : 'no'}">${isAlive ? 'alive' : 'unreachable'}</span></div>
+    <div class="node-row"><span class="key">leader</span><span class="val">${data?.currentLeader || '—'}</span></div>
+    <div class="node-row"><span class="key">alive nodes</span><span class="val">${isAlive ? alive.sort().join(', ') : '—'}</span></div>
+    <div class="node-row"><span class="key">gRPC port</span><span class="val">${data?.grpcPort || '—'}</span></div>
+  `;
+}
+
+// ── Topology SVG ─────────────────────────────────────────────────────────────
+function updateTopo(states) {
+  const leaderEntry = Object.entries(states).find(([id, s]) => s?.alive && s?.data?.isLeader);
+  const crown = document.getElementById('leader-crown');
+  if (leaderEntry) {
+    const [id] = leaderEntry;
+    const pos = NODE_POS[id];
+    crown.setAttribute('x', pos.cx);
+    crown.setAttribute('y', pos.cy - 26);
+    crown.setAttribute('opacity', '1');
+  } else {
+    crown.setAttribute('opacity', '0');
+  }
+
+  ['node1', 'node2', 'node3'].forEach(id => {
+    const alive    = states[id]?.alive;
+    const isLeader = states[id]?.data?.isLeader;
+    const c = document.getElementById('tc-' + id);
+    c.setAttribute('stroke',       alive ? (isLeader ? '#4f8ef7' : '#2a2e40') : '#e05c5c');
+    c.setAttribute('stroke-width', isLeader ? '2.5' : '1.5');
+  });
+
+  const pairs = [['node1','node2','topo-12'], ['node2','node3','topo-23'], ['node1','node3','topo-13']];
+  pairs.forEach(([a, b, id]) => {
+    const bothAlive = states[a]?.alive && states[b]?.alive;
+    document.getElementById(id).setAttribute('stroke', bothAlive ? '#2a2e40' : '#e05c5c44');
+  });
+}
+
+// ── SVG animations ───────────────────────────────────────────────────────────
+function animateClientArrow(targetNodeId) {
+  if (!NODE_POS[targetNodeId]) return;
+  const arrow = document.getElementById('client-arrow');
+  const pos   = NODE_POS[targetNodeId];
+  arrow.setAttribute('x2', pos.cx);
+  arrow.setAttribute('y2', pos.cy + 38);
+  arrow.setAttribute('opacity', '1');
+  setTimeout(() => arrow.setAttribute('opacity', '0'), 1200);
+}
+
+function animateForwardArrow(fromNodeId, toNodeId) {
+  if (!NODE_POS[fromNodeId] || !NODE_POS[toNodeId]) return;
+  const arrow = document.getElementById('forward-arrow');
+  const from  = NODE_POS[fromNodeId];
+  const to    = NODE_POS[toNodeId];
+
+  const dx   = to.cx - from.cx;
+  const dy   = to.cy - from.cy;
+  const dist = Math.sqrt(dx*dx + dy*dy);
+  const ux   = dx / dist;
+  const uy   = dy / dist;
+
+  arrow.setAttribute('x1', from.cx + ux * 38);
+  arrow.setAttribute('y1', from.cy + uy * 38);
+  arrow.setAttribute('x2', to.cx   - ux * 42);
+  arrow.setAttribute('y2', to.cy   - uy * 42);
+  arrow.setAttribute('opacity', '1');
+  setTimeout(() => arrow.setAttribute('opacity', '0'), 1000);
+}
+
+// ── Poll /status — keeps node cards & topology updated ──────────────────────
+async function poll() {
+  const states = {};
+
+  await Promise.all(NODES.map(async ({ id, httpPort }) => {
+    try {
+      const r    = await fetch(`http://localhost:${httpPort}/status`, { signal: AbortSignal.timeout(1500) });
+      const data = await r.json();
+      states[id] = { alive: true, data };
+
+      const prev = prevState[id];
+      // Feed entries for node-level transitions (complement to SSE stream)
+      if (!prev || !prev.alive) {
+        addFeed(id, id, 'heartbeat', 'heartbeat', 'node came online');
+      }
+      if (data.isLeader && !prev?.data?.isLeader) {
+        addFeed(id, id, 'paxos', 'paxos', 'became LEADER (detected via /status poll)');
+      }
+    } catch {
+      states[id] = { alive: false, data: null };
+      if (!prevState[id] || prevState[id].alive) {
+        addFeed(id, id, 'fault', 'fault', 'node UNREACHABLE — removed from cluster');
+      }
+    }
+  }));
+
+  NODES.forEach(({ id }) => renderCard(id, states[id]?.data, states[id]?.alive));
+  updateTopo(states);
+  prevState = states;
+}
+
+// ── Bootstrap ────────────────────────────────────────────────────────────────
+setInterval(() => { document.getElementById('clock').textContent = ts(); }, 1000);
+
+// Start SSE on node1 first (it's always started first by docker-compose)
+connectSSE(0);
+
+// Poll /status every 2 s for the node cards & topology
+poll();
+setInterval(poll, 2000);
+</script>
+</body>
+</html>

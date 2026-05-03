@@ -15,6 +15,7 @@ services:
     command: ["java", "-Djava.net.preferIPv4Stack=true", "-cp", "distributed-system-1.0-SNAPSHOT.jar", "rt4.distributed.NodeServer", "node1", "50051"]
     ports:
       - "50051:50051"
+      - "43051:43051"
     networks:
       dist-network:
         ipv4_address: 172.30.0.2
@@ -28,6 +29,7 @@ services:
     command: ["java", "-Djava.net.preferIPv4Stack=true", "-cp", "distributed-system-1.0-SNAPSHOT.jar", "rt4.distributed.NodeServer", "node2", "50052"]
     ports:
       - "50052:50052"
+      - "43052:43052"
     networks:
       dist-network:
         ipv4_address: 172.30.0.3
@@ -43,6 +45,7 @@ services:
     command: ["java", "-Djava.net.preferIPv4Stack=true", "-cp", "distributed-system-1.0-SNAPSHOT.jar", "rt4.distributed.NodeServer", "node3", "50053"]
     ports:
       - "50053:50053"
+      - "43053:43053"
     networks:
       dist-network:
         ipv4_address: 172.30.0.4
@@ -59,6 +62,20 @@ services:
     networks:
       dist-network:
         ipv4_address: 172.30.0.5
+    depends_on:
+      - node1
+      - node2
+      - node3
+  dashboard:
+    image: nginx:alpine
+    container_name: dist-dashboard
+    volumes:
+      - ./dashboard:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"       # open http://localhost:8080 to see the dashboard
+    networks:
+      dist-network:
+        ipv4_address: 172.30.0.6
     depends_on:
       - node1
       - node2

@@ -77,66 +77,159 @@ public final class NodeServiceGrpc {
     return getForwardTaskMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<rt4.distributed.TaskProto.LockRequest,
-      rt4.distributed.TaskProto.LockResponse> getAcquireLockMethod;
+  private static volatile io.grpc.MethodDescriptor<rt4.distributed.TaskProto.PrepareRequest,
+      rt4.distributed.TaskProto.PromiseResponse> getPrepareMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "AcquireLock",
-      requestType = rt4.distributed.TaskProto.LockRequest.class,
-      responseType = rt4.distributed.TaskProto.LockResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "Prepare",
+      requestType = rt4.distributed.TaskProto.PrepareRequest.class,
+      responseType = rt4.distributed.TaskProto.PromiseResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<rt4.distributed.TaskProto.LockRequest,
-      rt4.distributed.TaskProto.LockResponse> getAcquireLockMethod() {
-    io.grpc.MethodDescriptor<rt4.distributed.TaskProto.LockRequest, rt4.distributed.TaskProto.LockResponse> getAcquireLockMethod;
-    if ((getAcquireLockMethod = NodeServiceGrpc.getAcquireLockMethod) == null) {
+  public static io.grpc.MethodDescriptor<rt4.distributed.TaskProto.PrepareRequest,
+      rt4.distributed.TaskProto.PromiseResponse> getPrepareMethod() {
+    io.grpc.MethodDescriptor<rt4.distributed.TaskProto.PrepareRequest, rt4.distributed.TaskProto.PromiseResponse> getPrepareMethod;
+    if ((getPrepareMethod = NodeServiceGrpc.getPrepareMethod) == null) {
       synchronized (NodeServiceGrpc.class) {
-        if ((getAcquireLockMethod = NodeServiceGrpc.getAcquireLockMethod) == null) {
-          NodeServiceGrpc.getAcquireLockMethod = getAcquireLockMethod =
-              io.grpc.MethodDescriptor.<rt4.distributed.TaskProto.LockRequest, rt4.distributed.TaskProto.LockResponse>newBuilder()
+        if ((getPrepareMethod = NodeServiceGrpc.getPrepareMethod) == null) {
+          NodeServiceGrpc.getPrepareMethod = getPrepareMethod =
+              io.grpc.MethodDescriptor.<rt4.distributed.TaskProto.PrepareRequest, rt4.distributed.TaskProto.PromiseResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AcquireLock"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Prepare"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  rt4.distributed.TaskProto.LockRequest.getDefaultInstance()))
+                  rt4.distributed.TaskProto.PrepareRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  rt4.distributed.TaskProto.LockResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new NodeServiceMethodDescriptorSupplier("AcquireLock"))
+                  rt4.distributed.TaskProto.PromiseResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new NodeServiceMethodDescriptorSupplier("Prepare"))
               .build();
         }
       }
     }
-    return getAcquireLockMethod;
+    return getPrepareMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<rt4.distributed.TaskProto.LockRequest,
-      rt4.distributed.TaskProto.LockResponse> getReleaseLockMethod;
+  private static volatile io.grpc.MethodDescriptor<rt4.distributed.TaskProto.AcceptRequest,
+      rt4.distributed.TaskProto.AcceptedResponse> getAcceptMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ReleaseLock",
-      requestType = rt4.distributed.TaskProto.LockRequest.class,
-      responseType = rt4.distributed.TaskProto.LockResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "Accept",
+      requestType = rt4.distributed.TaskProto.AcceptRequest.class,
+      responseType = rt4.distributed.TaskProto.AcceptedResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<rt4.distributed.TaskProto.LockRequest,
-      rt4.distributed.TaskProto.LockResponse> getReleaseLockMethod() {
-    io.grpc.MethodDescriptor<rt4.distributed.TaskProto.LockRequest, rt4.distributed.TaskProto.LockResponse> getReleaseLockMethod;
-    if ((getReleaseLockMethod = NodeServiceGrpc.getReleaseLockMethod) == null) {
+  public static io.grpc.MethodDescriptor<rt4.distributed.TaskProto.AcceptRequest,
+      rt4.distributed.TaskProto.AcceptedResponse> getAcceptMethod() {
+    io.grpc.MethodDescriptor<rt4.distributed.TaskProto.AcceptRequest, rt4.distributed.TaskProto.AcceptedResponse> getAcceptMethod;
+    if ((getAcceptMethod = NodeServiceGrpc.getAcceptMethod) == null) {
       synchronized (NodeServiceGrpc.class) {
-        if ((getReleaseLockMethod = NodeServiceGrpc.getReleaseLockMethod) == null) {
-          NodeServiceGrpc.getReleaseLockMethod = getReleaseLockMethod =
-              io.grpc.MethodDescriptor.<rt4.distributed.TaskProto.LockRequest, rt4.distributed.TaskProto.LockResponse>newBuilder()
+        if ((getAcceptMethod = NodeServiceGrpc.getAcceptMethod) == null) {
+          NodeServiceGrpc.getAcceptMethod = getAcceptMethod =
+              io.grpc.MethodDescriptor.<rt4.distributed.TaskProto.AcceptRequest, rt4.distributed.TaskProto.AcceptedResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ReleaseLock"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Accept"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  rt4.distributed.TaskProto.LockRequest.getDefaultInstance()))
+                  rt4.distributed.TaskProto.AcceptRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  rt4.distributed.TaskProto.LockResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new NodeServiceMethodDescriptorSupplier("ReleaseLock"))
+                  rt4.distributed.TaskProto.AcceptedResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new NodeServiceMethodDescriptorSupplier("Accept"))
               .build();
         }
       }
     }
-    return getReleaseLockMethod;
+    return getAcceptMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<rt4.distributed.TaskProto.HealthRequest,
+      rt4.distributed.TaskProto.HealthResponse> getPingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Ping",
+      requestType = rt4.distributed.TaskProto.HealthRequest.class,
+      responseType = rt4.distributed.TaskProto.HealthResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<rt4.distributed.TaskProto.HealthRequest,
+      rt4.distributed.TaskProto.HealthResponse> getPingMethod() {
+    io.grpc.MethodDescriptor<rt4.distributed.TaskProto.HealthRequest, rt4.distributed.TaskProto.HealthResponse> getPingMethod;
+    if ((getPingMethod = NodeServiceGrpc.getPingMethod) == null) {
+      synchronized (NodeServiceGrpc.class) {
+        if ((getPingMethod = NodeServiceGrpc.getPingMethod) == null) {
+          NodeServiceGrpc.getPingMethod = getPingMethod =
+              io.grpc.MethodDescriptor.<rt4.distributed.TaskProto.HealthRequest, rt4.distributed.TaskProto.HealthResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Ping"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rt4.distributed.TaskProto.HealthRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rt4.distributed.TaskProto.HealthResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new NodeServiceMethodDescriptorSupplier("Ping"))
+              .build();
+        }
+      }
+    }
+    return getPingMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<rt4.distributed.TaskProto.MutexRequest,
+      rt4.distributed.TaskProto.MutexResponse> getRequestMutexMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "RequestMutex",
+      requestType = rt4.distributed.TaskProto.MutexRequest.class,
+      responseType = rt4.distributed.TaskProto.MutexResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<rt4.distributed.TaskProto.MutexRequest,
+      rt4.distributed.TaskProto.MutexResponse> getRequestMutexMethod() {
+    io.grpc.MethodDescriptor<rt4.distributed.TaskProto.MutexRequest, rt4.distributed.TaskProto.MutexResponse> getRequestMutexMethod;
+    if ((getRequestMutexMethod = NodeServiceGrpc.getRequestMutexMethod) == null) {
+      synchronized (NodeServiceGrpc.class) {
+        if ((getRequestMutexMethod = NodeServiceGrpc.getRequestMutexMethod) == null) {
+          NodeServiceGrpc.getRequestMutexMethod = getRequestMutexMethod =
+              io.grpc.MethodDescriptor.<rt4.distributed.TaskProto.MutexRequest, rt4.distributed.TaskProto.MutexResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RequestMutex"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rt4.distributed.TaskProto.MutexRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rt4.distributed.TaskProto.MutexResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new NodeServiceMethodDescriptorSupplier("RequestMutex"))
+              .build();
+        }
+      }
+    }
+    return getRequestMutexMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<rt4.distributed.TaskProto.MutexRequest,
+      rt4.distributed.TaskProto.MutexResponse> getReleaseMutexMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ReleaseMutex",
+      requestType = rt4.distributed.TaskProto.MutexRequest.class,
+      responseType = rt4.distributed.TaskProto.MutexResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<rt4.distributed.TaskProto.MutexRequest,
+      rt4.distributed.TaskProto.MutexResponse> getReleaseMutexMethod() {
+    io.grpc.MethodDescriptor<rt4.distributed.TaskProto.MutexRequest, rt4.distributed.TaskProto.MutexResponse> getReleaseMutexMethod;
+    if ((getReleaseMutexMethod = NodeServiceGrpc.getReleaseMutexMethod) == null) {
+      synchronized (NodeServiceGrpc.class) {
+        if ((getReleaseMutexMethod = NodeServiceGrpc.getReleaseMutexMethod) == null) {
+          NodeServiceGrpc.getReleaseMutexMethod = getReleaseMutexMethod =
+              io.grpc.MethodDescriptor.<rt4.distributed.TaskProto.MutexRequest, rt4.distributed.TaskProto.MutexResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ReleaseMutex"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rt4.distributed.TaskProto.MutexRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  rt4.distributed.TaskProto.MutexResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new NodeServiceMethodDescriptorSupplier("ReleaseMutex"))
+              .build();
+        }
+      }
+    }
+    return getReleaseMutexMethod;
   }
 
   /**
@@ -189,7 +282,7 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Client sends a task to any node
+     * ── Client-facing ──────────────────────────────────────────────────────────
      * </pre>
      */
     default void submitTask(rt4.distributed.TaskProto.TaskRequest request,
@@ -199,7 +292,7 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Nodes use this to forward tasks to the leader
+     * ── Inter-node: task routing ────────────────────────────────────────────────
      * </pre>
      */
     default void forwardTask(rt4.distributed.TaskProto.TaskRequest request,
@@ -209,22 +302,51 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Leader uses this to acquire the distributed mutex on all nodes
+     * ── Paxos Phase 1: Proposer → Acceptors ────────────────────────────────────
+     * Proposer sends a proposal number; acceptor promises not to accept lower ones
      * </pre>
      */
-    default void acquireLock(rt4.distributed.TaskProto.LockRequest request,
-        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.LockResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAcquireLockMethod(), responseObserver);
+    default void prepare(rt4.distributed.TaskProto.PrepareRequest request,
+        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.PromiseResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPrepareMethod(), responseObserver);
     }
 
     /**
      * <pre>
-     * Leader releases the lock after execution
+     * ── Paxos Phase 2: Proposer → Acceptors ────────────────────────────────────
+     * Proposer sends (proposalId, value); acceptor accepts if proposalId &gt;= promised
      * </pre>
      */
-    default void releaseLock(rt4.distributed.TaskProto.LockRequest request,
-        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.LockResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReleaseLockMethod(), responseObserver);
+    default void accept(rt4.distributed.TaskProto.AcceptRequest request,
+        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.AcceptedResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAcceptMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * ── Health check: heartbeat between nodes ──────────────────────────────────
+     * </pre>
+     */
+    default void ping(rt4.distributed.TaskProto.HealthRequest request,
+        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.HealthResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getPingMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *  Mutex messages
+     * </pre>
+     */
+    default void requestMutex(rt4.distributed.TaskProto.MutexRequest request,
+        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.MutexResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRequestMutexMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void releaseMutex(rt4.distributed.TaskProto.MutexRequest request,
+        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.MutexResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReleaseMutexMethod(), responseObserver);
     }
   }
 
@@ -257,7 +379,7 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Client sends a task to any node
+     * ── Client-facing ──────────────────────────────────────────────────────────
      * </pre>
      */
     public void submitTask(rt4.distributed.TaskProto.TaskRequest request,
@@ -268,7 +390,7 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Nodes use this to forward tasks to the leader
+     * ── Inter-node: task routing ────────────────────────────────────────────────
      * </pre>
      */
     public void forwardTask(rt4.distributed.TaskProto.TaskRequest request,
@@ -279,24 +401,56 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Leader uses this to acquire the distributed mutex on all nodes
+     * ── Paxos Phase 1: Proposer → Acceptors ────────────────────────────────────
+     * Proposer sends a proposal number; acceptor promises not to accept lower ones
      * </pre>
      */
-    public void acquireLock(rt4.distributed.TaskProto.LockRequest request,
-        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.LockResponse> responseObserver) {
+    public void prepare(rt4.distributed.TaskProto.PrepareRequest request,
+        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.PromiseResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getAcquireLockMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getPrepareMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      * <pre>
-     * Leader releases the lock after execution
+     * ── Paxos Phase 2: Proposer → Acceptors ────────────────────────────────────
+     * Proposer sends (proposalId, value); acceptor accepts if proposalId &gt;= promised
      * </pre>
      */
-    public void releaseLock(rt4.distributed.TaskProto.LockRequest request,
-        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.LockResponse> responseObserver) {
+    public void accept(rt4.distributed.TaskProto.AcceptRequest request,
+        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.AcceptedResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getReleaseLockMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getAcceptMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * ── Health check: heartbeat between nodes ──────────────────────────────────
+     * </pre>
+     */
+    public void ping(rt4.distributed.TaskProto.HealthRequest request,
+        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.HealthResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getPingMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     *  Mutex messages
+     * </pre>
+     */
+    public void requestMutex(rt4.distributed.TaskProto.MutexRequest request,
+        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.MutexResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getRequestMutexMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void releaseMutex(rt4.distributed.TaskProto.MutexRequest request,
+        io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.MutexResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getReleaseMutexMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -318,7 +472,7 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Client sends a task to any node
+     * ── Client-facing ──────────────────────────────────────────────────────────
      * </pre>
      */
     public rt4.distributed.TaskProto.TaskResponse submitTask(rt4.distributed.TaskProto.TaskRequest request) {
@@ -328,7 +482,7 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Nodes use this to forward tasks to the leader
+     * ── Inter-node: task routing ────────────────────────────────────────────────
      * </pre>
      */
     public rt4.distributed.TaskProto.TaskResponse forwardTask(rt4.distributed.TaskProto.TaskRequest request) {
@@ -338,22 +492,51 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Leader uses this to acquire the distributed mutex on all nodes
+     * ── Paxos Phase 1: Proposer → Acceptors ────────────────────────────────────
+     * Proposer sends a proposal number; acceptor promises not to accept lower ones
      * </pre>
      */
-    public rt4.distributed.TaskProto.LockResponse acquireLock(rt4.distributed.TaskProto.LockRequest request) {
+    public rt4.distributed.TaskProto.PromiseResponse prepare(rt4.distributed.TaskProto.PrepareRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getAcquireLockMethod(), getCallOptions(), request);
+          getChannel(), getPrepareMethod(), getCallOptions(), request);
     }
 
     /**
      * <pre>
-     * Leader releases the lock after execution
+     * ── Paxos Phase 2: Proposer → Acceptors ────────────────────────────────────
+     * Proposer sends (proposalId, value); acceptor accepts if proposalId &gt;= promised
      * </pre>
      */
-    public rt4.distributed.TaskProto.LockResponse releaseLock(rt4.distributed.TaskProto.LockRequest request) {
+    public rt4.distributed.TaskProto.AcceptedResponse accept(rt4.distributed.TaskProto.AcceptRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getReleaseLockMethod(), getCallOptions(), request);
+          getChannel(), getAcceptMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * ── Health check: heartbeat between nodes ──────────────────────────────────
+     * </pre>
+     */
+    public rt4.distributed.TaskProto.HealthResponse ping(rt4.distributed.TaskProto.HealthRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getPingMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     *  Mutex messages
+     * </pre>
+     */
+    public rt4.distributed.TaskProto.MutexResponse requestMutex(rt4.distributed.TaskProto.MutexRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getRequestMutexMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public rt4.distributed.TaskProto.MutexResponse releaseMutex(rt4.distributed.TaskProto.MutexRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getReleaseMutexMethod(), getCallOptions(), request);
     }
   }
 
@@ -375,7 +558,7 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Client sends a task to any node
+     * ── Client-facing ──────────────────────────────────────────────────────────
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<rt4.distributed.TaskProto.TaskResponse> submitTask(
@@ -386,7 +569,7 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Nodes use this to forward tasks to the leader
+     * ── Inter-node: task routing ────────────────────────────────────────────────
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<rt4.distributed.TaskProto.TaskResponse> forwardTask(
@@ -397,31 +580,66 @@ public final class NodeServiceGrpc {
 
     /**
      * <pre>
-     * Leader uses this to acquire the distributed mutex on all nodes
+     * ── Paxos Phase 1: Proposer → Acceptors ────────────────────────────────────
+     * Proposer sends a proposal number; acceptor promises not to accept lower ones
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<rt4.distributed.TaskProto.LockResponse> acquireLock(
-        rt4.distributed.TaskProto.LockRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rt4.distributed.TaskProto.PromiseResponse> prepare(
+        rt4.distributed.TaskProto.PrepareRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getAcquireLockMethod(), getCallOptions()), request);
+          getChannel().newCall(getPrepareMethod(), getCallOptions()), request);
     }
 
     /**
      * <pre>
-     * Leader releases the lock after execution
+     * ── Paxos Phase 2: Proposer → Acceptors ────────────────────────────────────
+     * Proposer sends (proposalId, value); acceptor accepts if proposalId &gt;= promised
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<rt4.distributed.TaskProto.LockResponse> releaseLock(
-        rt4.distributed.TaskProto.LockRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<rt4.distributed.TaskProto.AcceptedResponse> accept(
+        rt4.distributed.TaskProto.AcceptRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getReleaseLockMethod(), getCallOptions()), request);
+          getChannel().newCall(getAcceptMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * ── Health check: heartbeat between nodes ──────────────────────────────────
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<rt4.distributed.TaskProto.HealthResponse> ping(
+        rt4.distributed.TaskProto.HealthRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getPingMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     *  Mutex messages
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<rt4.distributed.TaskProto.MutexResponse> requestMutex(
+        rt4.distributed.TaskProto.MutexRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getRequestMutexMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<rt4.distributed.TaskProto.MutexResponse> releaseMutex(
+        rt4.distributed.TaskProto.MutexRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getReleaseMutexMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_SUBMIT_TASK = 0;
   private static final int METHODID_FORWARD_TASK = 1;
-  private static final int METHODID_ACQUIRE_LOCK = 2;
-  private static final int METHODID_RELEASE_LOCK = 3;
+  private static final int METHODID_PREPARE = 2;
+  private static final int METHODID_ACCEPT = 3;
+  private static final int METHODID_PING = 4;
+  private static final int METHODID_REQUEST_MUTEX = 5;
+  private static final int METHODID_RELEASE_MUTEX = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -448,13 +666,25 @@ public final class NodeServiceGrpc {
           serviceImpl.forwardTask((rt4.distributed.TaskProto.TaskRequest) request,
               (io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.TaskResponse>) responseObserver);
           break;
-        case METHODID_ACQUIRE_LOCK:
-          serviceImpl.acquireLock((rt4.distributed.TaskProto.LockRequest) request,
-              (io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.LockResponse>) responseObserver);
+        case METHODID_PREPARE:
+          serviceImpl.prepare((rt4.distributed.TaskProto.PrepareRequest) request,
+              (io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.PromiseResponse>) responseObserver);
           break;
-        case METHODID_RELEASE_LOCK:
-          serviceImpl.releaseLock((rt4.distributed.TaskProto.LockRequest) request,
-              (io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.LockResponse>) responseObserver);
+        case METHODID_ACCEPT:
+          serviceImpl.accept((rt4.distributed.TaskProto.AcceptRequest) request,
+              (io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.AcceptedResponse>) responseObserver);
+          break;
+        case METHODID_PING:
+          serviceImpl.ping((rt4.distributed.TaskProto.HealthRequest) request,
+              (io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.HealthResponse>) responseObserver);
+          break;
+        case METHODID_REQUEST_MUTEX:
+          serviceImpl.requestMutex((rt4.distributed.TaskProto.MutexRequest) request,
+              (io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.MutexResponse>) responseObserver);
+          break;
+        case METHODID_RELEASE_MUTEX:
+          serviceImpl.releaseMutex((rt4.distributed.TaskProto.MutexRequest) request,
+              (io.grpc.stub.StreamObserver<rt4.distributed.TaskProto.MutexResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -489,19 +719,40 @@ public final class NodeServiceGrpc {
               rt4.distributed.TaskProto.TaskResponse>(
                 service, METHODID_FORWARD_TASK)))
         .addMethod(
-          getAcquireLockMethod(),
+          getPrepareMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              rt4.distributed.TaskProto.LockRequest,
-              rt4.distributed.TaskProto.LockResponse>(
-                service, METHODID_ACQUIRE_LOCK)))
+              rt4.distributed.TaskProto.PrepareRequest,
+              rt4.distributed.TaskProto.PromiseResponse>(
+                service, METHODID_PREPARE)))
         .addMethod(
-          getReleaseLockMethod(),
+          getAcceptMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              rt4.distributed.TaskProto.LockRequest,
-              rt4.distributed.TaskProto.LockResponse>(
-                service, METHODID_RELEASE_LOCK)))
+              rt4.distributed.TaskProto.AcceptRequest,
+              rt4.distributed.TaskProto.AcceptedResponse>(
+                service, METHODID_ACCEPT)))
+        .addMethod(
+          getPingMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              rt4.distributed.TaskProto.HealthRequest,
+              rt4.distributed.TaskProto.HealthResponse>(
+                service, METHODID_PING)))
+        .addMethod(
+          getRequestMutexMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              rt4.distributed.TaskProto.MutexRequest,
+              rt4.distributed.TaskProto.MutexResponse>(
+                service, METHODID_REQUEST_MUTEX)))
+        .addMethod(
+          getReleaseMutexMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              rt4.distributed.TaskProto.MutexRequest,
+              rt4.distributed.TaskProto.MutexResponse>(
+                service, METHODID_RELEASE_MUTEX)))
         .build();
   }
 
@@ -552,8 +803,11 @@ public final class NodeServiceGrpc {
               .setSchemaDescriptor(new NodeServiceFileDescriptorSupplier())
               .addMethod(getSubmitTaskMethod())
               .addMethod(getForwardTaskMethod())
-              .addMethod(getAcquireLockMethod())
-              .addMethod(getReleaseLockMethod())
+              .addMethod(getPrepareMethod())
+              .addMethod(getAcceptMethod())
+              .addMethod(getPingMethod())
+              .addMethod(getRequestMutexMethod())
+              .addMethod(getReleaseMutexMethod())
               .build();
         }
       }

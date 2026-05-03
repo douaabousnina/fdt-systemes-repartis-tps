@@ -3,38 +3,91 @@ syntax = "proto3";
 option java_package = "rt4.distributed";
 option java_outer_classname = "TaskProto";
 
+// ─── Main service (unchanged RPC names, new ones added) ──────────────────────
+
 service NodeService {
-  // Client sends a task to any node
-  rpc SubmitTask (TaskRequest) returns (TaskResponse);
 
-  // Nodes use this to forward tasks to the leader
-  rpc ForwardTask (TaskRequest) returns (TaskResponse);
+  // ── Client-facing ──────────────────────────────────────────────────────────
+  rpc SubmitTask  (TaskRequest)  returns (TaskResponse);
 
-  // Leader uses this to acquire the distributed mutex on all nodes
-  rpc AcquireLock (LockRequest) returns (LockResponse);
+  // ── Inter-node: task routing ────────────────────────────────────────────────
+  rpc ForwardTask (TaskRequest)  returns (TaskResponse);
 
-  // Leader releases the lock after execution
-  rpc ReleaseLock (LockRequest) returns (LockResponse);
+  // ── Paxos Phase 1: Proposer → Acceptors ────────────────────────────────────
+  // Proposer sends a proposal number; acceptor promises not to accept lower ones
+  rpc Prepare     (PrepareRequest)  returns (PromiseResponse);
+
+  // ── Paxos Phase 2: Proposer → Acceptors ────────────────────────────────────
+  // Proposer sends (proposalId, value); acceptor accepts if proposalId >= promised
+  rpc Accept      (AcceptRequest)   returns (AcceptedResponse);
+
+  // ── Health check: heartbeat between nodes ──────────────────────────────────
+  rpc Ping        (HealthRequest)   returns (HealthResponse);
+
+  //  Mutex messages
+  rpc RequestMutex (MutexRequest)  returns (MutexResponse);
+
+  rpc ReleaseMutex (MutexRequest)  returns (MutexResponse);
+
 }
 
+// ─── Task messages ───────────────────────────────────────────────
+
 message TaskRequest {
-  string task_id = 1;
+  string task_id   = 1;
   string task_type = 2;  // "compute", "message", etc.
-  string payload = 3;
+  string payload   = 3;
 }
 
 message TaskResponse {
-  bool success = 1;
-  string result = 2;
+  bool   success     = 1;
+  string result      = 2;
   string executed_by = 3;
 }
 
-message LockRequest {
-  string task_id = 1;
-  string requester_node = 2;
+// ─── Paxos messages ──────────────────────────────────────────────────────────
+
+message PrepareRequest {
+  int32  proposal_id  = 1;  // monotonically increasing number from proposer
+  string proposer_id  = 2;  // nodeId of the proposer
 }
 
-message LockResponse {
-  bool granted = 1;
+message PromiseResponse {
+  bool   promised        = 1;  // true = acceptor promises not to accept lower proposals
+  int32  promised_id     = 2;  // highest proposal_id the acceptor has seen
+  string accepted_value  = 3;  // value from any previously accepted proposal (may be empty)
+}
+
+message AcceptRequest {
+  int32  proposal_id = 1;
+  string value       = 2;  // typically the nodeId elected as leader
+}
+
+message AcceptedResponse {
+  bool   accepted    = 1;
+  int32  promised_id = 2;  // so proposer can learn what higher proposal was promised
+}
+
+
+
+message MutexRequest {
+  string node_id = 1;
+}
+
+message MutexResponse {
+  bool   granted = 1;
   string message = 2;
+  int32  current_turn = 3;
+}
+
+// ─── Health check messages ───────────────────────────────────────────────────
+
+message HealthRequest {
+  string from_node = 1;
+}
+
+message HealthResponse {
+  bool   alive          = 1;
+  string node_id        = 2;
+  string current_leader = 3;  // let nodes gossip the current leader
 }

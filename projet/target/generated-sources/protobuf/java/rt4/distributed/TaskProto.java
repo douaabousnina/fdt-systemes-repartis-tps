@@ -1671,143 +1671,132 @@ public final class TaskProto {
 
   }
 
-  public interface LockRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:LockRequest)
+  public interface PrepareRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PrepareRequest)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string task_id = 1;</code>
-     * @return The taskId.
+     * <pre>
+     * monotonically increasing number from proposer
+     * </pre>
+     *
+     * <code>int32 proposal_id = 1;</code>
+     * @return The proposalId.
      */
-    java.lang.String getTaskId();
-    /**
-     * <code>string task_id = 1;</code>
-     * @return The bytes for taskId.
-     */
-    com.google.protobuf.ByteString
-        getTaskIdBytes();
+    int getProposalId();
 
     /**
-     * <code>string requester_node = 2;</code>
-     * @return The requesterNode.
+     * <pre>
+     * nodeId of the proposer
+     * </pre>
+     *
+     * <code>string proposer_id = 2;</code>
+     * @return The proposerId.
      */
-    java.lang.String getRequesterNode();
+    java.lang.String getProposerId();
     /**
-     * <code>string requester_node = 2;</code>
-     * @return The bytes for requesterNode.
+     * <pre>
+     * nodeId of the proposer
+     * </pre>
+     *
+     * <code>string proposer_id = 2;</code>
+     * @return The bytes for proposerId.
      */
     com.google.protobuf.ByteString
-        getRequesterNodeBytes();
+        getProposerIdBytes();
   }
   /**
-   * Protobuf type {@code LockRequest}
+   * Protobuf type {@code PrepareRequest}
    */
-  public static final class LockRequest extends
+  public static final class PrepareRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:LockRequest)
-      LockRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:PrepareRequest)
+      PrepareRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use LockRequest.newBuilder() to construct.
-    private LockRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PrepareRequest.newBuilder() to construct.
+    private PrepareRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private LockRequest() {
-      taskId_ = "";
-      requesterNode_ = "";
+    private PrepareRequest() {
+      proposerId_ = "";
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new LockRequest();
+      return new PrepareRequest();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return rt4.distributed.TaskProto.internal_static_LockRequest_descriptor;
+      return rt4.distributed.TaskProto.internal_static_PrepareRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return rt4.distributed.TaskProto.internal_static_LockRequest_fieldAccessorTable
+      return rt4.distributed.TaskProto.internal_static_PrepareRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              rt4.distributed.TaskProto.LockRequest.class, rt4.distributed.TaskProto.LockRequest.Builder.class);
+              rt4.distributed.TaskProto.PrepareRequest.class, rt4.distributed.TaskProto.PrepareRequest.Builder.class);
     }
 
-    public static final int TASK_ID_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object taskId_ = "";
+    public static final int PROPOSAL_ID_FIELD_NUMBER = 1;
+    private int proposalId_ = 0;
     /**
-     * <code>string task_id = 1;</code>
-     * @return The taskId.
+     * <pre>
+     * monotonically increasing number from proposer
+     * </pre>
+     *
+     * <code>int32 proposal_id = 1;</code>
+     * @return The proposalId.
      */
     @java.lang.Override
-    public java.lang.String getTaskId() {
-      java.lang.Object ref = taskId_;
+    public int getProposalId() {
+      return proposalId_;
+    }
+
+    public static final int PROPOSER_ID_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object proposerId_ = "";
+    /**
+     * <pre>
+     * nodeId of the proposer
+     * </pre>
+     *
+     * <code>string proposer_id = 2;</code>
+     * @return The proposerId.
+     */
+    @java.lang.Override
+    public java.lang.String getProposerId() {
+      java.lang.Object ref = proposerId_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        taskId_ = s;
+        proposerId_ = s;
         return s;
       }
     }
     /**
-     * <code>string task_id = 1;</code>
-     * @return The bytes for taskId.
+     * <pre>
+     * nodeId of the proposer
+     * </pre>
+     *
+     * <code>string proposer_id = 2;</code>
+     * @return The bytes for proposerId.
      */
     @java.lang.Override
     public com.google.protobuf.ByteString
-        getTaskIdBytes() {
-      java.lang.Object ref = taskId_;
+        getProposerIdBytes() {
+      java.lang.Object ref = proposerId_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        taskId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int REQUESTER_NODE_FIELD_NUMBER = 2;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object requesterNode_ = "";
-    /**
-     * <code>string requester_node = 2;</code>
-     * @return The requesterNode.
-     */
-    @java.lang.Override
-    public java.lang.String getRequesterNode() {
-      java.lang.Object ref = requesterNode_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        requesterNode_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string requester_node = 2;</code>
-     * @return The bytes for requesterNode.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getRequesterNodeBytes() {
-      java.lang.Object ref = requesterNode_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        requesterNode_ = b;
+        proposerId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1828,11 +1817,11 @@ public final class TaskProto {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(taskId_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, taskId_);
+      if (proposalId_ != 0) {
+        output.writeInt32(1, proposalId_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(requesterNode_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, requesterNode_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(proposerId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, proposerId_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -1843,11 +1832,12 @@ public final class TaskProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(taskId_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, taskId_);
+      if (proposalId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, proposalId_);
       }
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(requesterNode_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, requesterNode_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(proposerId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, proposerId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -1859,15 +1849,15 @@ public final class TaskProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof rt4.distributed.TaskProto.LockRequest)) {
+      if (!(obj instanceof rt4.distributed.TaskProto.PrepareRequest)) {
         return super.equals(obj);
       }
-      rt4.distributed.TaskProto.LockRequest other = (rt4.distributed.TaskProto.LockRequest) obj;
+      rt4.distributed.TaskProto.PrepareRequest other = (rt4.distributed.TaskProto.PrepareRequest) obj;
 
-      if (!getTaskId()
-          .equals(other.getTaskId())) return false;
-      if (!getRequesterNode()
-          .equals(other.getRequesterNode())) return false;
+      if (getProposalId()
+          != other.getProposalId()) return false;
+      if (!getProposerId()
+          .equals(other.getProposerId())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1879,53 +1869,53 @@ public final class TaskProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TASK_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getTaskId().hashCode();
-      hash = (37 * hash) + REQUESTER_NODE_FIELD_NUMBER;
-      hash = (53 * hash) + getRequesterNode().hashCode();
+      hash = (37 * hash) + PROPOSAL_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getProposalId();
+      hash = (37 * hash) + PROPOSER_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getProposerId().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static rt4.distributed.TaskProto.LockRequest parseFrom(
+    public static rt4.distributed.TaskProto.PrepareRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static rt4.distributed.TaskProto.LockRequest parseFrom(
+    public static rt4.distributed.TaskProto.PrepareRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static rt4.distributed.TaskProto.LockRequest parseFrom(
+    public static rt4.distributed.TaskProto.PrepareRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static rt4.distributed.TaskProto.LockRequest parseFrom(
+    public static rt4.distributed.TaskProto.PrepareRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static rt4.distributed.TaskProto.LockRequest parseFrom(byte[] data)
+    public static rt4.distributed.TaskProto.PrepareRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static rt4.distributed.TaskProto.LockRequest parseFrom(
+    public static rt4.distributed.TaskProto.PrepareRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static rt4.distributed.TaskProto.LockRequest parseFrom(java.io.InputStream input)
+    public static rt4.distributed.TaskProto.PrepareRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static rt4.distributed.TaskProto.LockRequest parseFrom(
+    public static rt4.distributed.TaskProto.PrepareRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1933,26 +1923,26 @@ public final class TaskProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static rt4.distributed.TaskProto.LockRequest parseDelimitedFrom(java.io.InputStream input)
+    public static rt4.distributed.TaskProto.PrepareRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static rt4.distributed.TaskProto.LockRequest parseDelimitedFrom(
+    public static rt4.distributed.TaskProto.PrepareRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static rt4.distributed.TaskProto.LockRequest parseFrom(
+    public static rt4.distributed.TaskProto.PrepareRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static rt4.distributed.TaskProto.LockRequest parseFrom(
+    public static rt4.distributed.TaskProto.PrepareRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1965,7 +1955,7 @@ public final class TaskProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(rt4.distributed.TaskProto.LockRequest prototype) {
+    public static Builder newBuilder(rt4.distributed.TaskProto.PrepareRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1981,26 +1971,26 @@ public final class TaskProto {
       return builder;
     }
     /**
-     * Protobuf type {@code LockRequest}
+     * Protobuf type {@code PrepareRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:LockRequest)
-        rt4.distributed.TaskProto.LockRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PrepareRequest)
+        rt4.distributed.TaskProto.PrepareRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return rt4.distributed.TaskProto.internal_static_LockRequest_descriptor;
+        return rt4.distributed.TaskProto.internal_static_PrepareRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return rt4.distributed.TaskProto.internal_static_LockRequest_fieldAccessorTable
+        return rt4.distributed.TaskProto.internal_static_PrepareRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                rt4.distributed.TaskProto.LockRequest.class, rt4.distributed.TaskProto.LockRequest.Builder.class);
+                rt4.distributed.TaskProto.PrepareRequest.class, rt4.distributed.TaskProto.PrepareRequest.Builder.class);
       }
 
-      // Construct using rt4.distributed.TaskProto.LockRequest.newBuilder()
+      // Construct using rt4.distributed.TaskProto.PrepareRequest.newBuilder()
       private Builder() {
 
       }
@@ -2014,25 +2004,25 @@ public final class TaskProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        taskId_ = "";
-        requesterNode_ = "";
+        proposalId_ = 0;
+        proposerId_ = "";
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return rt4.distributed.TaskProto.internal_static_LockRequest_descriptor;
+        return rt4.distributed.TaskProto.internal_static_PrepareRequest_descriptor;
       }
 
       @java.lang.Override
-      public rt4.distributed.TaskProto.LockRequest getDefaultInstanceForType() {
-        return rt4.distributed.TaskProto.LockRequest.getDefaultInstance();
+      public rt4.distributed.TaskProto.PrepareRequest getDefaultInstanceForType() {
+        return rt4.distributed.TaskProto.PrepareRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public rt4.distributed.TaskProto.LockRequest build() {
-        rt4.distributed.TaskProto.LockRequest result = buildPartial();
+      public rt4.distributed.TaskProto.PrepareRequest build() {
+        rt4.distributed.TaskProto.PrepareRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2040,20 +2030,20 @@ public final class TaskProto {
       }
 
       @java.lang.Override
-      public rt4.distributed.TaskProto.LockRequest buildPartial() {
-        rt4.distributed.TaskProto.LockRequest result = new rt4.distributed.TaskProto.LockRequest(this);
+      public rt4.distributed.TaskProto.PrepareRequest buildPartial() {
+        rt4.distributed.TaskProto.PrepareRequest result = new rt4.distributed.TaskProto.PrepareRequest(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(rt4.distributed.TaskProto.LockRequest result) {
+      private void buildPartial0(rt4.distributed.TaskProto.PrepareRequest result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.taskId_ = taskId_;
+          result.proposalId_ = proposalId_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.requesterNode_ = requesterNode_;
+          result.proposerId_ = proposerId_;
         }
       }
 
@@ -2091,23 +2081,21 @@ public final class TaskProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof rt4.distributed.TaskProto.LockRequest) {
-          return mergeFrom((rt4.distributed.TaskProto.LockRequest)other);
+        if (other instanceof rt4.distributed.TaskProto.PrepareRequest) {
+          return mergeFrom((rt4.distributed.TaskProto.PrepareRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(rt4.distributed.TaskProto.LockRequest other) {
-        if (other == rt4.distributed.TaskProto.LockRequest.getDefaultInstance()) return this;
-        if (!other.getTaskId().isEmpty()) {
-          taskId_ = other.taskId_;
-          bitField0_ |= 0x00000001;
-          onChanged();
+      public Builder mergeFrom(rt4.distributed.TaskProto.PrepareRequest other) {
+        if (other == rt4.distributed.TaskProto.PrepareRequest.getDefaultInstance()) return this;
+        if (other.getProposalId() != 0) {
+          setProposalId(other.getProposalId());
         }
-        if (!other.getRequesterNode().isEmpty()) {
-          requesterNode_ = other.requesterNode_;
+        if (!other.getProposerId().isEmpty()) {
+          proposerId_ = other.proposerId_;
           bitField0_ |= 0x00000002;
           onChanged();
         }
@@ -2137,13 +2125,13 @@ public final class TaskProto {
               case 0:
                 done = true;
                 break;
-              case 10: {
-                taskId_ = input.readStringRequireUtf8();
+              case 8: {
+                proposalId_ = input.readInt32();
                 bitField0_ |= 0x00000001;
                 break;
-              } // case 10
+              } // case 8
               case 18: {
-                requesterNode_ = input.readStringRequireUtf8();
+                proposerId_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000002;
                 break;
               } // case 18
@@ -2164,145 +2152,137 @@ public final class TaskProto {
       }
       private int bitField0_;
 
-      private java.lang.Object taskId_ = "";
+      private int proposalId_ ;
       /**
-       * <code>string task_id = 1;</code>
-       * @return The taskId.
+       * <pre>
+       * monotonically increasing number from proposer
+       * </pre>
+       *
+       * <code>int32 proposal_id = 1;</code>
+       * @return The proposalId.
        */
-      public java.lang.String getTaskId() {
-        java.lang.Object ref = taskId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          taskId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public int getProposalId() {
+        return proposalId_;
       }
       /**
-       * <code>string task_id = 1;</code>
-       * @return The bytes for taskId.
-       */
-      public com.google.protobuf.ByteString
-          getTaskIdBytes() {
-        java.lang.Object ref = taskId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          taskId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string task_id = 1;</code>
-       * @param value The taskId to set.
+       * <pre>
+       * monotonically increasing number from proposer
+       * </pre>
+       *
+       * <code>int32 proposal_id = 1;</code>
+       * @param value The proposalId to set.
        * @return This builder for chaining.
        */
-      public Builder setTaskId(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        taskId_ = value;
+      public Builder setProposalId(int value) {
+
+        proposalId_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>string task_id = 1;</code>
+       * <pre>
+       * monotonically increasing number from proposer
+       * </pre>
+       *
+       * <code>int32 proposal_id = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTaskId() {
-        taskId_ = getDefaultInstance().getTaskId();
+      public Builder clearProposalId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string task_id = 1;</code>
-       * @param value The bytes for taskId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTaskIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        checkByteStringIsUtf8(value);
-        taskId_ = value;
-        bitField0_ |= 0x00000001;
+        proposalId_ = 0;
         onChanged();
         return this;
       }
 
-      private java.lang.Object requesterNode_ = "";
+      private java.lang.Object proposerId_ = "";
       /**
-       * <code>string requester_node = 2;</code>
-       * @return The requesterNode.
+       * <pre>
+       * nodeId of the proposer
+       * </pre>
+       *
+       * <code>string proposer_id = 2;</code>
+       * @return The proposerId.
        */
-      public java.lang.String getRequesterNode() {
-        java.lang.Object ref = requesterNode_;
+      public java.lang.String getProposerId() {
+        java.lang.Object ref = proposerId_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          requesterNode_ = s;
+          proposerId_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string requester_node = 2;</code>
-       * @return The bytes for requesterNode.
+       * <pre>
+       * nodeId of the proposer
+       * </pre>
+       *
+       * <code>string proposer_id = 2;</code>
+       * @return The bytes for proposerId.
        */
       public com.google.protobuf.ByteString
-          getRequesterNodeBytes() {
-        java.lang.Object ref = requesterNode_;
+          getProposerIdBytes() {
+        java.lang.Object ref = proposerId_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          requesterNode_ = b;
+          proposerId_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string requester_node = 2;</code>
-       * @param value The requesterNode to set.
+       * <pre>
+       * nodeId of the proposer
+       * </pre>
+       *
+       * <code>string proposer_id = 2;</code>
+       * @param value The proposerId to set.
        * @return This builder for chaining.
        */
-      public Builder setRequesterNode(
+      public Builder setProposerId(
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
-        requesterNode_ = value;
+        proposerId_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
       }
       /**
-       * <code>string requester_node = 2;</code>
+       * <pre>
+       * nodeId of the proposer
+       * </pre>
+       *
+       * <code>string proposer_id = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRequesterNode() {
-        requesterNode_ = getDefaultInstance().getRequesterNode();
+      public Builder clearProposerId() {
+        proposerId_ = getDefaultInstance().getProposerId();
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
       /**
-       * <code>string requester_node = 2;</code>
-       * @param value The bytes for requesterNode to set.
+       * <pre>
+       * nodeId of the proposer
+       * </pre>
+       *
+       * <code>string proposer_id = 2;</code>
+       * @param value The bytes for proposerId to set.
        * @return This builder for chaining.
        */
-      public Builder setRequesterNodeBytes(
+      public Builder setProposerIdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        requesterNode_ = value;
+        proposerId_ = value;
         bitField0_ |= 0x00000002;
         onChanged();
         return this;
@@ -2320,23 +2300,23 @@ public final class TaskProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:LockRequest)
+      // @@protoc_insertion_point(builder_scope:PrepareRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:LockRequest)
-    private static final rt4.distributed.TaskProto.LockRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PrepareRequest)
+    private static final rt4.distributed.TaskProto.PrepareRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new rt4.distributed.TaskProto.LockRequest();
+      DEFAULT_INSTANCE = new rt4.distributed.TaskProto.PrepareRequest();
     }
 
-    public static rt4.distributed.TaskProto.LockRequest getDefaultInstance() {
+    public static rt4.distributed.TaskProto.PrepareRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<LockRequest>
-        PARSER = new com.google.protobuf.AbstractParser<LockRequest>() {
+    private static final com.google.protobuf.Parser<PrepareRequest>
+        PARSER = new com.google.protobuf.AbstractParser<PrepareRequest>() {
       @java.lang.Override
-      public LockRequest parsePartialFrom(
+      public PrepareRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2355,24 +2335,2578 @@ public final class TaskProto {
       }
     };
 
-    public static com.google.protobuf.Parser<LockRequest> parser() {
+    public static com.google.protobuf.Parser<PrepareRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LockRequest> getParserForType() {
+    public com.google.protobuf.Parser<PrepareRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public rt4.distributed.TaskProto.LockRequest getDefaultInstanceForType() {
+    public rt4.distributed.TaskProto.PrepareRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface LockResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:LockResponse)
+  public interface PromiseResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PromiseResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * true = acceptor promises not to accept lower proposals
+     * </pre>
+     *
+     * <code>bool promised = 1;</code>
+     * @return The promised.
+     */
+    boolean getPromised();
+
+    /**
+     * <pre>
+     * highest proposal_id the acceptor has seen
+     * </pre>
+     *
+     * <code>int32 promised_id = 2;</code>
+     * @return The promisedId.
+     */
+    int getPromisedId();
+
+    /**
+     * <pre>
+     * value from any previously accepted proposal (may be empty)
+     * </pre>
+     *
+     * <code>string accepted_value = 3;</code>
+     * @return The acceptedValue.
+     */
+    java.lang.String getAcceptedValue();
+    /**
+     * <pre>
+     * value from any previously accepted proposal (may be empty)
+     * </pre>
+     *
+     * <code>string accepted_value = 3;</code>
+     * @return The bytes for acceptedValue.
+     */
+    com.google.protobuf.ByteString
+        getAcceptedValueBytes();
+  }
+  /**
+   * Protobuf type {@code PromiseResponse}
+   */
+  public static final class PromiseResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:PromiseResponse)
+      PromiseResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PromiseResponse.newBuilder() to construct.
+    private PromiseResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PromiseResponse() {
+      acceptedValue_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PromiseResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return rt4.distributed.TaskProto.internal_static_PromiseResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rt4.distributed.TaskProto.internal_static_PromiseResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              rt4.distributed.TaskProto.PromiseResponse.class, rt4.distributed.TaskProto.PromiseResponse.Builder.class);
+    }
+
+    public static final int PROMISED_FIELD_NUMBER = 1;
+    private boolean promised_ = false;
+    /**
+     * <pre>
+     * true = acceptor promises not to accept lower proposals
+     * </pre>
+     *
+     * <code>bool promised = 1;</code>
+     * @return The promised.
+     */
+    @java.lang.Override
+    public boolean getPromised() {
+      return promised_;
+    }
+
+    public static final int PROMISED_ID_FIELD_NUMBER = 2;
+    private int promisedId_ = 0;
+    /**
+     * <pre>
+     * highest proposal_id the acceptor has seen
+     * </pre>
+     *
+     * <code>int32 promised_id = 2;</code>
+     * @return The promisedId.
+     */
+    @java.lang.Override
+    public int getPromisedId() {
+      return promisedId_;
+    }
+
+    public static final int ACCEPTED_VALUE_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object acceptedValue_ = "";
+    /**
+     * <pre>
+     * value from any previously accepted proposal (may be empty)
+     * </pre>
+     *
+     * <code>string accepted_value = 3;</code>
+     * @return The acceptedValue.
+     */
+    @java.lang.Override
+    public java.lang.String getAcceptedValue() {
+      java.lang.Object ref = acceptedValue_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        acceptedValue_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * value from any previously accepted proposal (may be empty)
+     * </pre>
+     *
+     * <code>string accepted_value = 3;</code>
+     * @return The bytes for acceptedValue.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAcceptedValueBytes() {
+      java.lang.Object ref = acceptedValue_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        acceptedValue_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (promised_ != false) {
+        output.writeBool(1, promised_);
+      }
+      if (promisedId_ != 0) {
+        output.writeInt32(2, promisedId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(acceptedValue_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, acceptedValue_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (promised_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, promised_);
+      }
+      if (promisedId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, promisedId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(acceptedValue_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, acceptedValue_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof rt4.distributed.TaskProto.PromiseResponse)) {
+        return super.equals(obj);
+      }
+      rt4.distributed.TaskProto.PromiseResponse other = (rt4.distributed.TaskProto.PromiseResponse) obj;
+
+      if (getPromised()
+          != other.getPromised()) return false;
+      if (getPromisedId()
+          != other.getPromisedId()) return false;
+      if (!getAcceptedValue()
+          .equals(other.getAcceptedValue())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PROMISED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getPromised());
+      hash = (37 * hash) + PROMISED_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPromisedId();
+      hash = (37 * hash) + ACCEPTED_VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getAcceptedValue().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static rt4.distributed.TaskProto.PromiseResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.PromiseResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.PromiseResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.PromiseResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.PromiseResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.PromiseResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.PromiseResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.PromiseResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static rt4.distributed.TaskProto.PromiseResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static rt4.distributed.TaskProto.PromiseResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.PromiseResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.PromiseResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(rt4.distributed.TaskProto.PromiseResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code PromiseResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PromiseResponse)
+        rt4.distributed.TaskProto.PromiseResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return rt4.distributed.TaskProto.internal_static_PromiseResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rt4.distributed.TaskProto.internal_static_PromiseResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                rt4.distributed.TaskProto.PromiseResponse.class, rt4.distributed.TaskProto.PromiseResponse.Builder.class);
+      }
+
+      // Construct using rt4.distributed.TaskProto.PromiseResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        promised_ = false;
+        promisedId_ = 0;
+        acceptedValue_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return rt4.distributed.TaskProto.internal_static_PromiseResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.PromiseResponse getDefaultInstanceForType() {
+        return rt4.distributed.TaskProto.PromiseResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.PromiseResponse build() {
+        rt4.distributed.TaskProto.PromiseResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.PromiseResponse buildPartial() {
+        rt4.distributed.TaskProto.PromiseResponse result = new rt4.distributed.TaskProto.PromiseResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(rt4.distributed.TaskProto.PromiseResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.promised_ = promised_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.promisedId_ = promisedId_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.acceptedValue_ = acceptedValue_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof rt4.distributed.TaskProto.PromiseResponse) {
+          return mergeFrom((rt4.distributed.TaskProto.PromiseResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(rt4.distributed.TaskProto.PromiseResponse other) {
+        if (other == rt4.distributed.TaskProto.PromiseResponse.getDefaultInstance()) return this;
+        if (other.getPromised() != false) {
+          setPromised(other.getPromised());
+        }
+        if (other.getPromisedId() != 0) {
+          setPromisedId(other.getPromisedId());
+        }
+        if (!other.getAcceptedValue().isEmpty()) {
+          acceptedValue_ = other.acceptedValue_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                promised_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                promisedId_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                acceptedValue_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean promised_ ;
+      /**
+       * <pre>
+       * true = acceptor promises not to accept lower proposals
+       * </pre>
+       *
+       * <code>bool promised = 1;</code>
+       * @return The promised.
+       */
+      @java.lang.Override
+      public boolean getPromised() {
+        return promised_;
+      }
+      /**
+       * <pre>
+       * true = acceptor promises not to accept lower proposals
+       * </pre>
+       *
+       * <code>bool promised = 1;</code>
+       * @param value The promised to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPromised(boolean value) {
+
+        promised_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * true = acceptor promises not to accept lower proposals
+       * </pre>
+       *
+       * <code>bool promised = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPromised() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        promised_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int promisedId_ ;
+      /**
+       * <pre>
+       * highest proposal_id the acceptor has seen
+       * </pre>
+       *
+       * <code>int32 promised_id = 2;</code>
+       * @return The promisedId.
+       */
+      @java.lang.Override
+      public int getPromisedId() {
+        return promisedId_;
+      }
+      /**
+       * <pre>
+       * highest proposal_id the acceptor has seen
+       * </pre>
+       *
+       * <code>int32 promised_id = 2;</code>
+       * @param value The promisedId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPromisedId(int value) {
+
+        promisedId_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * highest proposal_id the acceptor has seen
+       * </pre>
+       *
+       * <code>int32 promised_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPromisedId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        promisedId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object acceptedValue_ = "";
+      /**
+       * <pre>
+       * value from any previously accepted proposal (may be empty)
+       * </pre>
+       *
+       * <code>string accepted_value = 3;</code>
+       * @return The acceptedValue.
+       */
+      public java.lang.String getAcceptedValue() {
+        java.lang.Object ref = acceptedValue_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          acceptedValue_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * value from any previously accepted proposal (may be empty)
+       * </pre>
+       *
+       * <code>string accepted_value = 3;</code>
+       * @return The bytes for acceptedValue.
+       */
+      public com.google.protobuf.ByteString
+          getAcceptedValueBytes() {
+        java.lang.Object ref = acceptedValue_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          acceptedValue_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * value from any previously accepted proposal (may be empty)
+       * </pre>
+       *
+       * <code>string accepted_value = 3;</code>
+       * @param value The acceptedValue to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAcceptedValue(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        acceptedValue_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * value from any previously accepted proposal (may be empty)
+       * </pre>
+       *
+       * <code>string accepted_value = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAcceptedValue() {
+        acceptedValue_ = getDefaultInstance().getAcceptedValue();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * value from any previously accepted proposal (may be empty)
+       * </pre>
+       *
+       * <code>string accepted_value = 3;</code>
+       * @param value The bytes for acceptedValue to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAcceptedValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        acceptedValue_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:PromiseResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:PromiseResponse)
+    private static final rt4.distributed.TaskProto.PromiseResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new rt4.distributed.TaskProto.PromiseResponse();
+    }
+
+    public static rt4.distributed.TaskProto.PromiseResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PromiseResponse>
+        PARSER = new com.google.protobuf.AbstractParser<PromiseResponse>() {
+      @java.lang.Override
+      public PromiseResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<PromiseResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PromiseResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public rt4.distributed.TaskProto.PromiseResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AcceptRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:AcceptRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 proposal_id = 1;</code>
+     * @return The proposalId.
+     */
+    int getProposalId();
+
+    /**
+     * <pre>
+     * typically the nodeId elected as leader
+     * </pre>
+     *
+     * <code>string value = 2;</code>
+     * @return The value.
+     */
+    java.lang.String getValue();
+    /**
+     * <pre>
+     * typically the nodeId elected as leader
+     * </pre>
+     *
+     * <code>string value = 2;</code>
+     * @return The bytes for value.
+     */
+    com.google.protobuf.ByteString
+        getValueBytes();
+  }
+  /**
+   * Protobuf type {@code AcceptRequest}
+   */
+  public static final class AcceptRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:AcceptRequest)
+      AcceptRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AcceptRequest.newBuilder() to construct.
+    private AcceptRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AcceptRequest() {
+      value_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AcceptRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return rt4.distributed.TaskProto.internal_static_AcceptRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rt4.distributed.TaskProto.internal_static_AcceptRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              rt4.distributed.TaskProto.AcceptRequest.class, rt4.distributed.TaskProto.AcceptRequest.Builder.class);
+    }
+
+    public static final int PROPOSAL_ID_FIELD_NUMBER = 1;
+    private int proposalId_ = 0;
+    /**
+     * <code>int32 proposal_id = 1;</code>
+     * @return The proposalId.
+     */
+    @java.lang.Override
+    public int getProposalId() {
+      return proposalId_;
+    }
+
+    public static final int VALUE_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object value_ = "";
+    /**
+     * <pre>
+     * typically the nodeId elected as leader
+     * </pre>
+     *
+     * <code>string value = 2;</code>
+     * @return The value.
+     */
+    @java.lang.Override
+    public java.lang.String getValue() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        value_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * typically the nodeId elected as leader
+     * </pre>
+     *
+     * <code>string value = 2;</code>
+     * @return The bytes for value.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getValueBytes() {
+      java.lang.Object ref = value_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        value_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (proposalId_ != 0) {
+        output.writeInt32(1, proposalId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, value_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (proposalId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, proposalId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, value_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof rt4.distributed.TaskProto.AcceptRequest)) {
+        return super.equals(obj);
+      }
+      rt4.distributed.TaskProto.AcceptRequest other = (rt4.distributed.TaskProto.AcceptRequest) obj;
+
+      if (getProposalId()
+          != other.getProposalId()) return false;
+      if (!getValue()
+          .equals(other.getValue())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PROPOSAL_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getProposalId();
+      hash = (37 * hash) + VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getValue().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static rt4.distributed.TaskProto.AcceptRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.AcceptRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.AcceptRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.AcceptRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.AcceptRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.AcceptRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.AcceptRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.AcceptRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static rt4.distributed.TaskProto.AcceptRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static rt4.distributed.TaskProto.AcceptRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.AcceptRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.AcceptRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(rt4.distributed.TaskProto.AcceptRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code AcceptRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:AcceptRequest)
+        rt4.distributed.TaskProto.AcceptRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return rt4.distributed.TaskProto.internal_static_AcceptRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rt4.distributed.TaskProto.internal_static_AcceptRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                rt4.distributed.TaskProto.AcceptRequest.class, rt4.distributed.TaskProto.AcceptRequest.Builder.class);
+      }
+
+      // Construct using rt4.distributed.TaskProto.AcceptRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        proposalId_ = 0;
+        value_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return rt4.distributed.TaskProto.internal_static_AcceptRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.AcceptRequest getDefaultInstanceForType() {
+        return rt4.distributed.TaskProto.AcceptRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.AcceptRequest build() {
+        rt4.distributed.TaskProto.AcceptRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.AcceptRequest buildPartial() {
+        rt4.distributed.TaskProto.AcceptRequest result = new rt4.distributed.TaskProto.AcceptRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(rt4.distributed.TaskProto.AcceptRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.proposalId_ = proposalId_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.value_ = value_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof rt4.distributed.TaskProto.AcceptRequest) {
+          return mergeFrom((rt4.distributed.TaskProto.AcceptRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(rt4.distributed.TaskProto.AcceptRequest other) {
+        if (other == rt4.distributed.TaskProto.AcceptRequest.getDefaultInstance()) return this;
+        if (other.getProposalId() != 0) {
+          setProposalId(other.getProposalId());
+        }
+        if (!other.getValue().isEmpty()) {
+          value_ = other.value_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                proposalId_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                value_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int proposalId_ ;
+      /**
+       * <code>int32 proposal_id = 1;</code>
+       * @return The proposalId.
+       */
+      @java.lang.Override
+      public int getProposalId() {
+        return proposalId_;
+      }
+      /**
+       * <code>int32 proposal_id = 1;</code>
+       * @param value The proposalId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setProposalId(int value) {
+
+        proposalId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 proposal_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearProposalId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        proposalId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object value_ = "";
+      /**
+       * <pre>
+       * typically the nodeId elected as leader
+       * </pre>
+       *
+       * <code>string value = 2;</code>
+       * @return The value.
+       */
+      public java.lang.String getValue() {
+        java.lang.Object ref = value_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          value_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * typically the nodeId elected as leader
+       * </pre>
+       *
+       * <code>string value = 2;</code>
+       * @return The bytes for value.
+       */
+      public com.google.protobuf.ByteString
+          getValueBytes() {
+        java.lang.Object ref = value_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          value_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * typically the nodeId elected as leader
+       * </pre>
+       *
+       * <code>string value = 2;</code>
+       * @param value The value to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValue(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        value_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * typically the nodeId elected as leader
+       * </pre>
+       *
+       * <code>string value = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearValue() {
+        value_ = getDefaultInstance().getValue();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * typically the nodeId elected as leader
+       * </pre>
+       *
+       * <code>string value = 2;</code>
+       * @param value The bytes for value to set.
+       * @return This builder for chaining.
+       */
+      public Builder setValueBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        value_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:AcceptRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:AcceptRequest)
+    private static final rt4.distributed.TaskProto.AcceptRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new rt4.distributed.TaskProto.AcceptRequest();
+    }
+
+    public static rt4.distributed.TaskProto.AcceptRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AcceptRequest>
+        PARSER = new com.google.protobuf.AbstractParser<AcceptRequest>() {
+      @java.lang.Override
+      public AcceptRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AcceptRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AcceptRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public rt4.distributed.TaskProto.AcceptRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AcceptedResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:AcceptedResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bool accepted = 1;</code>
+     * @return The accepted.
+     */
+    boolean getAccepted();
+
+    /**
+     * <pre>
+     * so proposer can learn what higher proposal was promised
+     * </pre>
+     *
+     * <code>int32 promised_id = 2;</code>
+     * @return The promisedId.
+     */
+    int getPromisedId();
+  }
+  /**
+   * Protobuf type {@code AcceptedResponse}
+   */
+  public static final class AcceptedResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:AcceptedResponse)
+      AcceptedResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AcceptedResponse.newBuilder() to construct.
+    private AcceptedResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AcceptedResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AcceptedResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return rt4.distributed.TaskProto.internal_static_AcceptedResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rt4.distributed.TaskProto.internal_static_AcceptedResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              rt4.distributed.TaskProto.AcceptedResponse.class, rt4.distributed.TaskProto.AcceptedResponse.Builder.class);
+    }
+
+    public static final int ACCEPTED_FIELD_NUMBER = 1;
+    private boolean accepted_ = false;
+    /**
+     * <code>bool accepted = 1;</code>
+     * @return The accepted.
+     */
+    @java.lang.Override
+    public boolean getAccepted() {
+      return accepted_;
+    }
+
+    public static final int PROMISED_ID_FIELD_NUMBER = 2;
+    private int promisedId_ = 0;
+    /**
+     * <pre>
+     * so proposer can learn what higher proposal was promised
+     * </pre>
+     *
+     * <code>int32 promised_id = 2;</code>
+     * @return The promisedId.
+     */
+    @java.lang.Override
+    public int getPromisedId() {
+      return promisedId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (accepted_ != false) {
+        output.writeBool(1, accepted_);
+      }
+      if (promisedId_ != 0) {
+        output.writeInt32(2, promisedId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (accepted_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, accepted_);
+      }
+      if (promisedId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, promisedId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof rt4.distributed.TaskProto.AcceptedResponse)) {
+        return super.equals(obj);
+      }
+      rt4.distributed.TaskProto.AcceptedResponse other = (rt4.distributed.TaskProto.AcceptedResponse) obj;
+
+      if (getAccepted()
+          != other.getAccepted()) return false;
+      if (getPromisedId()
+          != other.getPromisedId()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ACCEPTED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getAccepted());
+      hash = (37 * hash) + PROMISED_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getPromisedId();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static rt4.distributed.TaskProto.AcceptedResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.AcceptedResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.AcceptedResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.AcceptedResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.AcceptedResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.AcceptedResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.AcceptedResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.AcceptedResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static rt4.distributed.TaskProto.AcceptedResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static rt4.distributed.TaskProto.AcceptedResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.AcceptedResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.AcceptedResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(rt4.distributed.TaskProto.AcceptedResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code AcceptedResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:AcceptedResponse)
+        rt4.distributed.TaskProto.AcceptedResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return rt4.distributed.TaskProto.internal_static_AcceptedResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rt4.distributed.TaskProto.internal_static_AcceptedResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                rt4.distributed.TaskProto.AcceptedResponse.class, rt4.distributed.TaskProto.AcceptedResponse.Builder.class);
+      }
+
+      // Construct using rt4.distributed.TaskProto.AcceptedResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        accepted_ = false;
+        promisedId_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return rt4.distributed.TaskProto.internal_static_AcceptedResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.AcceptedResponse getDefaultInstanceForType() {
+        return rt4.distributed.TaskProto.AcceptedResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.AcceptedResponse build() {
+        rt4.distributed.TaskProto.AcceptedResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.AcceptedResponse buildPartial() {
+        rt4.distributed.TaskProto.AcceptedResponse result = new rt4.distributed.TaskProto.AcceptedResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(rt4.distributed.TaskProto.AcceptedResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.accepted_ = accepted_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.promisedId_ = promisedId_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof rt4.distributed.TaskProto.AcceptedResponse) {
+          return mergeFrom((rt4.distributed.TaskProto.AcceptedResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(rt4.distributed.TaskProto.AcceptedResponse other) {
+        if (other == rt4.distributed.TaskProto.AcceptedResponse.getDefaultInstance()) return this;
+        if (other.getAccepted() != false) {
+          setAccepted(other.getAccepted());
+        }
+        if (other.getPromisedId() != 0) {
+          setPromisedId(other.getPromisedId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                accepted_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                promisedId_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean accepted_ ;
+      /**
+       * <code>bool accepted = 1;</code>
+       * @return The accepted.
+       */
+      @java.lang.Override
+      public boolean getAccepted() {
+        return accepted_;
+      }
+      /**
+       * <code>bool accepted = 1;</code>
+       * @param value The accepted to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAccepted(boolean value) {
+
+        accepted_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool accepted = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAccepted() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        accepted_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int promisedId_ ;
+      /**
+       * <pre>
+       * so proposer can learn what higher proposal was promised
+       * </pre>
+       *
+       * <code>int32 promised_id = 2;</code>
+       * @return The promisedId.
+       */
+      @java.lang.Override
+      public int getPromisedId() {
+        return promisedId_;
+      }
+      /**
+       * <pre>
+       * so proposer can learn what higher proposal was promised
+       * </pre>
+       *
+       * <code>int32 promised_id = 2;</code>
+       * @param value The promisedId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPromisedId(int value) {
+
+        promisedId_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * so proposer can learn what higher proposal was promised
+       * </pre>
+       *
+       * <code>int32 promised_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPromisedId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        promisedId_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:AcceptedResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:AcceptedResponse)
+    private static final rt4.distributed.TaskProto.AcceptedResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new rt4.distributed.TaskProto.AcceptedResponse();
+    }
+
+    public static rt4.distributed.TaskProto.AcceptedResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AcceptedResponse>
+        PARSER = new com.google.protobuf.AbstractParser<AcceptedResponse>() {
+      @java.lang.Override
+      public AcceptedResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AcceptedResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AcceptedResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public rt4.distributed.TaskProto.AcceptedResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MutexRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MutexRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string node_id = 1;</code>
+     * @return The nodeId.
+     */
+    java.lang.String getNodeId();
+    /**
+     * <code>string node_id = 1;</code>
+     * @return The bytes for nodeId.
+     */
+    com.google.protobuf.ByteString
+        getNodeIdBytes();
+  }
+  /**
+   * Protobuf type {@code MutexRequest}
+   */
+  public static final class MutexRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:MutexRequest)
+      MutexRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use MutexRequest.newBuilder() to construct.
+    private MutexRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private MutexRequest() {
+      nodeId_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new MutexRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return rt4.distributed.TaskProto.internal_static_MutexRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rt4.distributed.TaskProto.internal_static_MutexRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              rt4.distributed.TaskProto.MutexRequest.class, rt4.distributed.TaskProto.MutexRequest.Builder.class);
+    }
+
+    public static final int NODE_ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object nodeId_ = "";
+    /**
+     * <code>string node_id = 1;</code>
+     * @return The nodeId.
+     */
+    @java.lang.Override
+    public java.lang.String getNodeId() {
+      java.lang.Object ref = nodeId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nodeId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string node_id = 1;</code>
+     * @return The bytes for nodeId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNodeIdBytes() {
+      java.lang.Object ref = nodeId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nodeId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nodeId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, nodeId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nodeId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, nodeId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof rt4.distributed.TaskProto.MutexRequest)) {
+        return super.equals(obj);
+      }
+      rt4.distributed.TaskProto.MutexRequest other = (rt4.distributed.TaskProto.MutexRequest) obj;
+
+      if (!getNodeId()
+          .equals(other.getNodeId())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + NODE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getNodeId().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static rt4.distributed.TaskProto.MutexRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.MutexRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.MutexRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.MutexRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.MutexRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.MutexRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.MutexRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.MutexRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static rt4.distributed.TaskProto.MutexRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static rt4.distributed.TaskProto.MutexRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.MutexRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.MutexRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(rt4.distributed.TaskProto.MutexRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MutexRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MutexRequest)
+        rt4.distributed.TaskProto.MutexRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return rt4.distributed.TaskProto.internal_static_MutexRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rt4.distributed.TaskProto.internal_static_MutexRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                rt4.distributed.TaskProto.MutexRequest.class, rt4.distributed.TaskProto.MutexRequest.Builder.class);
+      }
+
+      // Construct using rt4.distributed.TaskProto.MutexRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        nodeId_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return rt4.distributed.TaskProto.internal_static_MutexRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.MutexRequest getDefaultInstanceForType() {
+        return rt4.distributed.TaskProto.MutexRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.MutexRequest build() {
+        rt4.distributed.TaskProto.MutexRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.MutexRequest buildPartial() {
+        rt4.distributed.TaskProto.MutexRequest result = new rt4.distributed.TaskProto.MutexRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(rt4.distributed.TaskProto.MutexRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.nodeId_ = nodeId_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof rt4.distributed.TaskProto.MutexRequest) {
+          return mergeFrom((rt4.distributed.TaskProto.MutexRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(rt4.distributed.TaskProto.MutexRequest other) {
+        if (other == rt4.distributed.TaskProto.MutexRequest.getDefaultInstance()) return this;
+        if (!other.getNodeId().isEmpty()) {
+          nodeId_ = other.nodeId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                nodeId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object nodeId_ = "";
+      /**
+       * <code>string node_id = 1;</code>
+       * @return The nodeId.
+       */
+      public java.lang.String getNodeId() {
+        java.lang.Object ref = nodeId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nodeId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string node_id = 1;</code>
+       * @return The bytes for nodeId.
+       */
+      public com.google.protobuf.ByteString
+          getNodeIdBytes() {
+        java.lang.Object ref = nodeId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nodeId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string node_id = 1;</code>
+       * @param value The nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        nodeId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string node_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNodeId() {
+        nodeId_ = getDefaultInstance().getNodeId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string node_id = 1;</code>
+       * @param value The bytes for nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        nodeId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:MutexRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:MutexRequest)
+    private static final rt4.distributed.TaskProto.MutexRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new rt4.distributed.TaskProto.MutexRequest();
+    }
+
+    public static rt4.distributed.TaskProto.MutexRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MutexRequest>
+        PARSER = new com.google.protobuf.AbstractParser<MutexRequest>() {
+      @java.lang.Override
+      public MutexRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<MutexRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MutexRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public rt4.distributed.TaskProto.MutexRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MutexResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MutexResponse)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2392,20 +4926,26 @@ public final class TaskProto {
      */
     com.google.protobuf.ByteString
         getMessageBytes();
+
+    /**
+     * <code>int32 current_turn = 3;</code>
+     * @return The currentTurn.
+     */
+    int getCurrentTurn();
   }
   /**
-   * Protobuf type {@code LockResponse}
+   * Protobuf type {@code MutexResponse}
    */
-  public static final class LockResponse extends
+  public static final class MutexResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:LockResponse)
-      LockResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:MutexResponse)
+      MutexResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use LockResponse.newBuilder() to construct.
-    private LockResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use MutexResponse.newBuilder() to construct.
+    private MutexResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private LockResponse() {
+    private MutexResponse() {
       message_ = "";
     }
 
@@ -2413,20 +4953,20 @@ public final class TaskProto {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new LockResponse();
+      return new MutexResponse();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return rt4.distributed.TaskProto.internal_static_LockResponse_descriptor;
+      return rt4.distributed.TaskProto.internal_static_MutexResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return rt4.distributed.TaskProto.internal_static_LockResponse_fieldAccessorTable
+      return rt4.distributed.TaskProto.internal_static_MutexResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              rt4.distributed.TaskProto.LockResponse.class, rt4.distributed.TaskProto.LockResponse.Builder.class);
+              rt4.distributed.TaskProto.MutexResponse.class, rt4.distributed.TaskProto.MutexResponse.Builder.class);
     }
 
     public static final int GRANTED_FIELD_NUMBER = 1;
@@ -2479,6 +5019,17 @@ public final class TaskProto {
       }
     }
 
+    public static final int CURRENT_TURN_FIELD_NUMBER = 3;
+    private int currentTurn_ = 0;
+    /**
+     * <code>int32 current_turn = 3;</code>
+     * @return The currentTurn.
+     */
+    @java.lang.Override
+    public int getCurrentTurn() {
+      return currentTurn_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2499,6 +5050,9 @@ public final class TaskProto {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
       }
+      if (currentTurn_ != 0) {
+        output.writeInt32(3, currentTurn_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2515,6 +5069,10 @@ public final class TaskProto {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
       }
+      if (currentTurn_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, currentTurn_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2525,15 +5083,17 @@ public final class TaskProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof rt4.distributed.TaskProto.LockResponse)) {
+      if (!(obj instanceof rt4.distributed.TaskProto.MutexResponse)) {
         return super.equals(obj);
       }
-      rt4.distributed.TaskProto.LockResponse other = (rt4.distributed.TaskProto.LockResponse) obj;
+      rt4.distributed.TaskProto.MutexResponse other = (rt4.distributed.TaskProto.MutexResponse) obj;
 
       if (getGranted()
           != other.getGranted()) return false;
       if (!getMessage()
           .equals(other.getMessage())) return false;
+      if (getCurrentTurn()
+          != other.getCurrentTurn()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2550,49 +5110,51 @@ public final class TaskProto {
           getGranted());
       hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
       hash = (53 * hash) + getMessage().hashCode();
+      hash = (37 * hash) + CURRENT_TURN_FIELD_NUMBER;
+      hash = (53 * hash) + getCurrentTurn();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static rt4.distributed.TaskProto.LockResponse parseFrom(
+    public static rt4.distributed.TaskProto.MutexResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static rt4.distributed.TaskProto.LockResponse parseFrom(
+    public static rt4.distributed.TaskProto.MutexResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static rt4.distributed.TaskProto.LockResponse parseFrom(
+    public static rt4.distributed.TaskProto.MutexResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static rt4.distributed.TaskProto.LockResponse parseFrom(
+    public static rt4.distributed.TaskProto.MutexResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static rt4.distributed.TaskProto.LockResponse parseFrom(byte[] data)
+    public static rt4.distributed.TaskProto.MutexResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static rt4.distributed.TaskProto.LockResponse parseFrom(
+    public static rt4.distributed.TaskProto.MutexResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static rt4.distributed.TaskProto.LockResponse parseFrom(java.io.InputStream input)
+    public static rt4.distributed.TaskProto.MutexResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static rt4.distributed.TaskProto.LockResponse parseFrom(
+    public static rt4.distributed.TaskProto.MutexResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2600,26 +5162,26 @@ public final class TaskProto {
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static rt4.distributed.TaskProto.LockResponse parseDelimitedFrom(java.io.InputStream input)
+    public static rt4.distributed.TaskProto.MutexResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static rt4.distributed.TaskProto.LockResponse parseDelimitedFrom(
+    public static rt4.distributed.TaskProto.MutexResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static rt4.distributed.TaskProto.LockResponse parseFrom(
+    public static rt4.distributed.TaskProto.MutexResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static rt4.distributed.TaskProto.LockResponse parseFrom(
+    public static rt4.distributed.TaskProto.MutexResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2632,7 +5194,7 @@ public final class TaskProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(rt4.distributed.TaskProto.LockResponse prototype) {
+    public static Builder newBuilder(rt4.distributed.TaskProto.MutexResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2648,26 +5210,26 @@ public final class TaskProto {
       return builder;
     }
     /**
-     * Protobuf type {@code LockResponse}
+     * Protobuf type {@code MutexResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:LockResponse)
-        rt4.distributed.TaskProto.LockResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:MutexResponse)
+        rt4.distributed.TaskProto.MutexResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return rt4.distributed.TaskProto.internal_static_LockResponse_descriptor;
+        return rt4.distributed.TaskProto.internal_static_MutexResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return rt4.distributed.TaskProto.internal_static_LockResponse_fieldAccessorTable
+        return rt4.distributed.TaskProto.internal_static_MutexResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                rt4.distributed.TaskProto.LockResponse.class, rt4.distributed.TaskProto.LockResponse.Builder.class);
+                rt4.distributed.TaskProto.MutexResponse.class, rt4.distributed.TaskProto.MutexResponse.Builder.class);
       }
 
-      // Construct using rt4.distributed.TaskProto.LockResponse.newBuilder()
+      // Construct using rt4.distributed.TaskProto.MutexResponse.newBuilder()
       private Builder() {
 
       }
@@ -2683,23 +5245,24 @@ public final class TaskProto {
         bitField0_ = 0;
         granted_ = false;
         message_ = "";
+        currentTurn_ = 0;
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return rt4.distributed.TaskProto.internal_static_LockResponse_descriptor;
+        return rt4.distributed.TaskProto.internal_static_MutexResponse_descriptor;
       }
 
       @java.lang.Override
-      public rt4.distributed.TaskProto.LockResponse getDefaultInstanceForType() {
-        return rt4.distributed.TaskProto.LockResponse.getDefaultInstance();
+      public rt4.distributed.TaskProto.MutexResponse getDefaultInstanceForType() {
+        return rt4.distributed.TaskProto.MutexResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public rt4.distributed.TaskProto.LockResponse build() {
-        rt4.distributed.TaskProto.LockResponse result = buildPartial();
+      public rt4.distributed.TaskProto.MutexResponse build() {
+        rt4.distributed.TaskProto.MutexResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2707,20 +5270,23 @@ public final class TaskProto {
       }
 
       @java.lang.Override
-      public rt4.distributed.TaskProto.LockResponse buildPartial() {
-        rt4.distributed.TaskProto.LockResponse result = new rt4.distributed.TaskProto.LockResponse(this);
+      public rt4.distributed.TaskProto.MutexResponse buildPartial() {
+        rt4.distributed.TaskProto.MutexResponse result = new rt4.distributed.TaskProto.MutexResponse(this);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(rt4.distributed.TaskProto.LockResponse result) {
+      private void buildPartial0(rt4.distributed.TaskProto.MutexResponse result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
           result.granted_ = granted_;
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.message_ = message_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.currentTurn_ = currentTurn_;
         }
       }
 
@@ -2758,16 +5324,16 @@ public final class TaskProto {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof rt4.distributed.TaskProto.LockResponse) {
-          return mergeFrom((rt4.distributed.TaskProto.LockResponse)other);
+        if (other instanceof rt4.distributed.TaskProto.MutexResponse) {
+          return mergeFrom((rt4.distributed.TaskProto.MutexResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(rt4.distributed.TaskProto.LockResponse other) {
-        if (other == rt4.distributed.TaskProto.LockResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(rt4.distributed.TaskProto.MutexResponse other) {
+        if (other == rt4.distributed.TaskProto.MutexResponse.getDefaultInstance()) return this;
         if (other.getGranted() != false) {
           setGranted(other.getGranted());
         }
@@ -2775,6 +5341,9 @@ public final class TaskProto {
           message_ = other.message_;
           bitField0_ |= 0x00000002;
           onChanged();
+        }
+        if (other.getCurrentTurn() != 0) {
+          setCurrentTurn(other.getCurrentTurn());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -2812,6 +5381,11 @@ public final class TaskProto {
                 bitField0_ |= 0x00000002;
                 break;
               } // case 18
+              case 24: {
+                currentTurn_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2932,6 +5506,38 @@ public final class TaskProto {
         onChanged();
         return this;
       }
+
+      private int currentTurn_ ;
+      /**
+       * <code>int32 current_turn = 3;</code>
+       * @return The currentTurn.
+       */
+      @java.lang.Override
+      public int getCurrentTurn() {
+        return currentTurn_;
+      }
+      /**
+       * <code>int32 current_turn = 3;</code>
+       * @param value The currentTurn to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCurrentTurn(int value) {
+
+        currentTurn_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 current_turn = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCurrentTurn() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        currentTurn_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2945,23 +5551,23 @@ public final class TaskProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:LockResponse)
+      // @@protoc_insertion_point(builder_scope:MutexResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:LockResponse)
-    private static final rt4.distributed.TaskProto.LockResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:MutexResponse)
+    private static final rt4.distributed.TaskProto.MutexResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new rt4.distributed.TaskProto.LockResponse();
+      DEFAULT_INSTANCE = new rt4.distributed.TaskProto.MutexResponse();
     }
 
-    public static rt4.distributed.TaskProto.LockResponse getDefaultInstance() {
+    public static rt4.distributed.TaskProto.MutexResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<LockResponse>
-        PARSER = new com.google.protobuf.AbstractParser<LockResponse>() {
+    private static final com.google.protobuf.Parser<MutexResponse>
+        PARSER = new com.google.protobuf.AbstractParser<MutexResponse>() {
       @java.lang.Override
-      public LockResponse parsePartialFrom(
+      public MutexResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2980,17 +5586,1378 @@ public final class TaskProto {
       }
     };
 
-    public static com.google.protobuf.Parser<LockResponse> parser() {
+    public static com.google.protobuf.Parser<MutexResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LockResponse> getParserForType() {
+    public com.google.protobuf.Parser<MutexResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public rt4.distributed.TaskProto.LockResponse getDefaultInstanceForType() {
+    public rt4.distributed.TaskProto.MutexResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface HealthRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:HealthRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string from_node = 1;</code>
+     * @return The fromNode.
+     */
+    java.lang.String getFromNode();
+    /**
+     * <code>string from_node = 1;</code>
+     * @return The bytes for fromNode.
+     */
+    com.google.protobuf.ByteString
+        getFromNodeBytes();
+  }
+  /**
+   * Protobuf type {@code HealthRequest}
+   */
+  public static final class HealthRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:HealthRequest)
+      HealthRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use HealthRequest.newBuilder() to construct.
+    private HealthRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private HealthRequest() {
+      fromNode_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new HealthRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return rt4.distributed.TaskProto.internal_static_HealthRequest_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rt4.distributed.TaskProto.internal_static_HealthRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              rt4.distributed.TaskProto.HealthRequest.class, rt4.distributed.TaskProto.HealthRequest.Builder.class);
+    }
+
+    public static final int FROM_NODE_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object fromNode_ = "";
+    /**
+     * <code>string from_node = 1;</code>
+     * @return The fromNode.
+     */
+    @java.lang.Override
+    public java.lang.String getFromNode() {
+      java.lang.Object ref = fromNode_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        fromNode_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string from_node = 1;</code>
+     * @return The bytes for fromNode.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getFromNodeBytes() {
+      java.lang.Object ref = fromNode_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fromNode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(fromNode_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, fromNode_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(fromNode_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, fromNode_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof rt4.distributed.TaskProto.HealthRequest)) {
+        return super.equals(obj);
+      }
+      rt4.distributed.TaskProto.HealthRequest other = (rt4.distributed.TaskProto.HealthRequest) obj;
+
+      if (!getFromNode()
+          .equals(other.getFromNode())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + FROM_NODE_FIELD_NUMBER;
+      hash = (53 * hash) + getFromNode().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static rt4.distributed.TaskProto.HealthRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.HealthRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.HealthRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.HealthRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.HealthRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.HealthRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.HealthRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.HealthRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static rt4.distributed.TaskProto.HealthRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static rt4.distributed.TaskProto.HealthRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.HealthRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.HealthRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(rt4.distributed.TaskProto.HealthRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HealthRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:HealthRequest)
+        rt4.distributed.TaskProto.HealthRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return rt4.distributed.TaskProto.internal_static_HealthRequest_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rt4.distributed.TaskProto.internal_static_HealthRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                rt4.distributed.TaskProto.HealthRequest.class, rt4.distributed.TaskProto.HealthRequest.Builder.class);
+      }
+
+      // Construct using rt4.distributed.TaskProto.HealthRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        fromNode_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return rt4.distributed.TaskProto.internal_static_HealthRequest_descriptor;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.HealthRequest getDefaultInstanceForType() {
+        return rt4.distributed.TaskProto.HealthRequest.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.HealthRequest build() {
+        rt4.distributed.TaskProto.HealthRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.HealthRequest buildPartial() {
+        rt4.distributed.TaskProto.HealthRequest result = new rt4.distributed.TaskProto.HealthRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(rt4.distributed.TaskProto.HealthRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.fromNode_ = fromNode_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof rt4.distributed.TaskProto.HealthRequest) {
+          return mergeFrom((rt4.distributed.TaskProto.HealthRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(rt4.distributed.TaskProto.HealthRequest other) {
+        if (other == rt4.distributed.TaskProto.HealthRequest.getDefaultInstance()) return this;
+        if (!other.getFromNode().isEmpty()) {
+          fromNode_ = other.fromNode_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                fromNode_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object fromNode_ = "";
+      /**
+       * <code>string from_node = 1;</code>
+       * @return The fromNode.
+       */
+      public java.lang.String getFromNode() {
+        java.lang.Object ref = fromNode_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          fromNode_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string from_node = 1;</code>
+       * @return The bytes for fromNode.
+       */
+      public com.google.protobuf.ByteString
+          getFromNodeBytes() {
+        java.lang.Object ref = fromNode_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fromNode_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string from_node = 1;</code>
+       * @param value The fromNode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFromNode(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        fromNode_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string from_node = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFromNode() {
+        fromNode_ = getDefaultInstance().getFromNode();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string from_node = 1;</code>
+       * @param value The bytes for fromNode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFromNodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        fromNode_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:HealthRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:HealthRequest)
+    private static final rt4.distributed.TaskProto.HealthRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new rt4.distributed.TaskProto.HealthRequest();
+    }
+
+    public static rt4.distributed.TaskProto.HealthRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<HealthRequest>
+        PARSER = new com.google.protobuf.AbstractParser<HealthRequest>() {
+      @java.lang.Override
+      public HealthRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<HealthRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HealthRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public rt4.distributed.TaskProto.HealthRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface HealthResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:HealthResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>bool alive = 1;</code>
+     * @return The alive.
+     */
+    boolean getAlive();
+
+    /**
+     * <code>string node_id = 2;</code>
+     * @return The nodeId.
+     */
+    java.lang.String getNodeId();
+    /**
+     * <code>string node_id = 2;</code>
+     * @return The bytes for nodeId.
+     */
+    com.google.protobuf.ByteString
+        getNodeIdBytes();
+
+    /**
+     * <pre>
+     * let nodes gossip the current leader
+     * </pre>
+     *
+     * <code>string current_leader = 3;</code>
+     * @return The currentLeader.
+     */
+    java.lang.String getCurrentLeader();
+    /**
+     * <pre>
+     * let nodes gossip the current leader
+     * </pre>
+     *
+     * <code>string current_leader = 3;</code>
+     * @return The bytes for currentLeader.
+     */
+    com.google.protobuf.ByteString
+        getCurrentLeaderBytes();
+  }
+  /**
+   * Protobuf type {@code HealthResponse}
+   */
+  public static final class HealthResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:HealthResponse)
+      HealthResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use HealthResponse.newBuilder() to construct.
+    private HealthResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private HealthResponse() {
+      nodeId_ = "";
+      currentLeader_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new HealthResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return rt4.distributed.TaskProto.internal_static_HealthResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return rt4.distributed.TaskProto.internal_static_HealthResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              rt4.distributed.TaskProto.HealthResponse.class, rt4.distributed.TaskProto.HealthResponse.Builder.class);
+    }
+
+    public static final int ALIVE_FIELD_NUMBER = 1;
+    private boolean alive_ = false;
+    /**
+     * <code>bool alive = 1;</code>
+     * @return The alive.
+     */
+    @java.lang.Override
+    public boolean getAlive() {
+      return alive_;
+    }
+
+    public static final int NODE_ID_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object nodeId_ = "";
+    /**
+     * <code>string node_id = 2;</code>
+     * @return The nodeId.
+     */
+    @java.lang.Override
+    public java.lang.String getNodeId() {
+      java.lang.Object ref = nodeId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nodeId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string node_id = 2;</code>
+     * @return The bytes for nodeId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNodeIdBytes() {
+      java.lang.Object ref = nodeId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nodeId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CURRENT_LEADER_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object currentLeader_ = "";
+    /**
+     * <pre>
+     * let nodes gossip the current leader
+     * </pre>
+     *
+     * <code>string current_leader = 3;</code>
+     * @return The currentLeader.
+     */
+    @java.lang.Override
+    public java.lang.String getCurrentLeader() {
+      java.lang.Object ref = currentLeader_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        currentLeader_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * let nodes gossip the current leader
+     * </pre>
+     *
+     * <code>string current_leader = 3;</code>
+     * @return The bytes for currentLeader.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCurrentLeaderBytes() {
+      java.lang.Object ref = currentLeader_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        currentLeader_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (alive_ != false) {
+        output.writeBool(1, alive_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nodeId_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nodeId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(currentLeader_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, currentLeader_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (alive_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, alive_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(nodeId_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, nodeId_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(currentLeader_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, currentLeader_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof rt4.distributed.TaskProto.HealthResponse)) {
+        return super.equals(obj);
+      }
+      rt4.distributed.TaskProto.HealthResponse other = (rt4.distributed.TaskProto.HealthResponse) obj;
+
+      if (getAlive()
+          != other.getAlive()) return false;
+      if (!getNodeId()
+          .equals(other.getNodeId())) return false;
+      if (!getCurrentLeader()
+          .equals(other.getCurrentLeader())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ALIVE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getAlive());
+      hash = (37 * hash) + NODE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getNodeId().hashCode();
+      hash = (37 * hash) + CURRENT_LEADER_FIELD_NUMBER;
+      hash = (53 * hash) + getCurrentLeader().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static rt4.distributed.TaskProto.HealthResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.HealthResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.HealthResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.HealthResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.HealthResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static rt4.distributed.TaskProto.HealthResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.HealthResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.HealthResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static rt4.distributed.TaskProto.HealthResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static rt4.distributed.TaskProto.HealthResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static rt4.distributed.TaskProto.HealthResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static rt4.distributed.TaskProto.HealthResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(rt4.distributed.TaskProto.HealthResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code HealthResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:HealthResponse)
+        rt4.distributed.TaskProto.HealthResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return rt4.distributed.TaskProto.internal_static_HealthResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return rt4.distributed.TaskProto.internal_static_HealthResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                rt4.distributed.TaskProto.HealthResponse.class, rt4.distributed.TaskProto.HealthResponse.Builder.class);
+      }
+
+      // Construct using rt4.distributed.TaskProto.HealthResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        alive_ = false;
+        nodeId_ = "";
+        currentLeader_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return rt4.distributed.TaskProto.internal_static_HealthResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.HealthResponse getDefaultInstanceForType() {
+        return rt4.distributed.TaskProto.HealthResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.HealthResponse build() {
+        rt4.distributed.TaskProto.HealthResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public rt4.distributed.TaskProto.HealthResponse buildPartial() {
+        rt4.distributed.TaskProto.HealthResponse result = new rt4.distributed.TaskProto.HealthResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(rt4.distributed.TaskProto.HealthResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.alive_ = alive_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.nodeId_ = nodeId_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.currentLeader_ = currentLeader_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof rt4.distributed.TaskProto.HealthResponse) {
+          return mergeFrom((rt4.distributed.TaskProto.HealthResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(rt4.distributed.TaskProto.HealthResponse other) {
+        if (other == rt4.distributed.TaskProto.HealthResponse.getDefaultInstance()) return this;
+        if (other.getAlive() != false) {
+          setAlive(other.getAlive());
+        }
+        if (!other.getNodeId().isEmpty()) {
+          nodeId_ = other.nodeId_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getCurrentLeader().isEmpty()) {
+          currentLeader_ = other.currentLeader_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                alive_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                nodeId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                currentLeader_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean alive_ ;
+      /**
+       * <code>bool alive = 1;</code>
+       * @return The alive.
+       */
+      @java.lang.Override
+      public boolean getAlive() {
+        return alive_;
+      }
+      /**
+       * <code>bool alive = 1;</code>
+       * @param value The alive to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAlive(boolean value) {
+
+        alive_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool alive = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearAlive() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        alive_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object nodeId_ = "";
+      /**
+       * <code>string node_id = 2;</code>
+       * @return The nodeId.
+       */
+      public java.lang.String getNodeId() {
+        java.lang.Object ref = nodeId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nodeId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string node_id = 2;</code>
+       * @return The bytes for nodeId.
+       */
+      public com.google.protobuf.ByteString
+          getNodeIdBytes() {
+        java.lang.Object ref = nodeId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nodeId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string node_id = 2;</code>
+       * @param value The nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        nodeId_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string node_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNodeId() {
+        nodeId_ = getDefaultInstance().getNodeId();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string node_id = 2;</code>
+       * @param value The bytes for nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        nodeId_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object currentLeader_ = "";
+      /**
+       * <pre>
+       * let nodes gossip the current leader
+       * </pre>
+       *
+       * <code>string current_leader = 3;</code>
+       * @return The currentLeader.
+       */
+      public java.lang.String getCurrentLeader() {
+        java.lang.Object ref = currentLeader_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          currentLeader_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * let nodes gossip the current leader
+       * </pre>
+       *
+       * <code>string current_leader = 3;</code>
+       * @return The bytes for currentLeader.
+       */
+      public com.google.protobuf.ByteString
+          getCurrentLeaderBytes() {
+        java.lang.Object ref = currentLeader_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          currentLeader_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * let nodes gossip the current leader
+       * </pre>
+       *
+       * <code>string current_leader = 3;</code>
+       * @param value The currentLeader to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCurrentLeader(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        currentLeader_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * let nodes gossip the current leader
+       * </pre>
+       *
+       * <code>string current_leader = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCurrentLeader() {
+        currentLeader_ = getDefaultInstance().getCurrentLeader();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * let nodes gossip the current leader
+       * </pre>
+       *
+       * <code>string current_leader = 3;</code>
+       * @param value The bytes for currentLeader to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCurrentLeaderBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        currentLeader_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:HealthResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:HealthResponse)
+    private static final rt4.distributed.TaskProto.HealthResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new rt4.distributed.TaskProto.HealthResponse();
+    }
+
+    public static rt4.distributed.TaskProto.HealthResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<HealthResponse>
+        PARSER = new com.google.protobuf.AbstractParser<HealthResponse>() {
+      @java.lang.Override
+      public HealthResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<HealthResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<HealthResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public rt4.distributed.TaskProto.HealthResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3007,15 +6974,45 @@ public final class TaskProto {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TaskResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_LockRequest_descriptor;
+    internal_static_PrepareRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_LockRequest_fieldAccessorTable;
+      internal_static_PrepareRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_LockResponse_descriptor;
+    internal_static_PromiseResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_LockResponse_fieldAccessorTable;
+      internal_static_PromiseResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_AcceptRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_AcceptRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_AcceptedResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_AcceptedResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MutexRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MutexRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MutexResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_MutexResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_HealthRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_HealthRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_HealthResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_HealthResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3028,16 +7025,28 @@ public final class TaskProto {
       "\n\ntask.proto\"B\n\013TaskRequest\022\017\n\007task_id\030\001" +
       " \001(\t\022\021\n\ttask_type\030\002 \001(\t\022\017\n\007payload\030\003 \001(\t" +
       "\"D\n\014TaskResponse\022\017\n\007success\030\001 \001(\010\022\016\n\006res" +
-      "ult\030\002 \001(\t\022\023\n\013executed_by\030\003 \001(\t\"6\n\013LockRe" +
-      "quest\022\017\n\007task_id\030\001 \001(\t\022\026\n\016requester_node" +
-      "\030\002 \001(\t\"0\n\014LockResponse\022\017\n\007granted\030\001 \001(\010\022" +
-      "\017\n\007message\030\002 \001(\t2\274\001\n\013NodeService\022)\n\nSubm" +
-      "itTask\022\014.TaskRequest\032\r.TaskResponse\022*\n\013F" +
-      "orwardTask\022\014.TaskRequest\032\r.TaskResponse\022" +
-      "*\n\013AcquireLock\022\014.LockRequest\032\r.LockRespo" +
-      "nse\022*\n\013ReleaseLock\022\014.LockRequest\032\r.LockR" +
-      "esponseB\034\n\017rt4.distributedB\tTaskProtob\006p" +
-      "roto3"
+      "ult\030\002 \001(\t\022\023\n\013executed_by\030\003 \001(\t\":\n\016Prepar" +
+      "eRequest\022\023\n\013proposal_id\030\001 \001(\005\022\023\n\013propose" +
+      "r_id\030\002 \001(\t\"P\n\017PromiseResponse\022\020\n\010promise" +
+      "d\030\001 \001(\010\022\023\n\013promised_id\030\002 \001(\005\022\026\n\016accepted" +
+      "_value\030\003 \001(\t\"3\n\rAcceptRequest\022\023\n\013proposa" +
+      "l_id\030\001 \001(\005\022\r\n\005value\030\002 \001(\t\"9\n\020AcceptedRes" +
+      "ponse\022\020\n\010accepted\030\001 \001(\010\022\023\n\013promised_id\030\002" +
+      " \001(\005\"\037\n\014MutexRequest\022\017\n\007node_id\030\001 \001(\t\"G\n" +
+      "\rMutexResponse\022\017\n\007granted\030\001 \001(\010\022\017\n\007messa" +
+      "ge\030\002 \001(\t\022\024\n\014current_turn\030\003 \001(\005\"\"\n\rHealth" +
+      "Request\022\021\n\tfrom_node\030\001 \001(\t\"H\n\016HealthResp" +
+      "onse\022\r\n\005alive\030\001 \001(\010\022\017\n\007node_id\030\002 \001(\t\022\026\n\016" +
+      "current_leader\030\003 \001(\t2\306\002\n\013NodeService\022)\n\n" +
+      "SubmitTask\022\014.TaskRequest\032\r.TaskResponse\022" +
+      "*\n\013ForwardTask\022\014.TaskRequest\032\r.TaskRespo" +
+      "nse\022,\n\007Prepare\022\017.PrepareRequest\032\020.Promis" +
+      "eResponse\022+\n\006Accept\022\016.AcceptRequest\032\021.Ac" +
+      "ceptedResponse\022\'\n\004Ping\022\016.HealthRequest\032\017" +
+      ".HealthResponse\022-\n\014RequestMutex\022\r.MutexR" +
+      "equest\032\016.MutexResponse\022-\n\014ReleaseMutex\022\r" +
+      ".MutexRequest\032\016.MutexResponseB\034\n\017rt4.dis" +
+      "tributedB\tTaskProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3055,18 +7064,54 @@ public final class TaskProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TaskResponse_descriptor,
         new java.lang.String[] { "Success", "Result", "ExecutedBy", });
-    internal_static_LockRequest_descriptor =
+    internal_static_PrepareRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_LockRequest_fieldAccessorTable = new
+    internal_static_PrepareRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_LockRequest_descriptor,
-        new java.lang.String[] { "TaskId", "RequesterNode", });
-    internal_static_LockResponse_descriptor =
+        internal_static_PrepareRequest_descriptor,
+        new java.lang.String[] { "ProposalId", "ProposerId", });
+    internal_static_PromiseResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_LockResponse_fieldAccessorTable = new
+    internal_static_PromiseResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_LockResponse_descriptor,
-        new java.lang.String[] { "Granted", "Message", });
+        internal_static_PromiseResponse_descriptor,
+        new java.lang.String[] { "Promised", "PromisedId", "AcceptedValue", });
+    internal_static_AcceptRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_AcceptRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_AcceptRequest_descriptor,
+        new java.lang.String[] { "ProposalId", "Value", });
+    internal_static_AcceptedResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_AcceptedResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_AcceptedResponse_descriptor,
+        new java.lang.String[] { "Accepted", "PromisedId", });
+    internal_static_MutexRequest_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_MutexRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MutexRequest_descriptor,
+        new java.lang.String[] { "NodeId", });
+    internal_static_MutexResponse_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_MutexResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_MutexResponse_descriptor,
+        new java.lang.String[] { "Granted", "Message", "CurrentTurn", });
+    internal_static_HealthRequest_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_HealthRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_HealthRequest_descriptor,
+        new java.lang.String[] { "FromNode", });
+    internal_static_HealthResponse_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_HealthResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_HealthResponse_descriptor,
+        new java.lang.String[] { "Alive", "NodeId", "CurrentLeader", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
